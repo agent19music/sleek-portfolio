@@ -35,7 +35,7 @@ export default function NewHeroSection() {
           {/* Banner Section */}
           <Reveal delay={0.1}>
             <BannerSection
-              bannerImage="/banner.png"
+              bannerImage="https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/banner.webp"
               quote="Get inspiration and know what to do with it."
             />
           </Reveal>
