@@ -8,19 +8,19 @@ interface BannerSectionProps {
 }
 
 export default function BannerSection({
-  quote = "You make your own luck if you stay at it long enough.",
+  quote = "Find inspiration and know what do with it.",
   bannerImage = "/banner.jpg"
 }: BannerSectionProps) {
   return (
     <div className="w-full mb-2 relative">
-      <div className="relative" style={{ height: 'auto' }}>
+      <div className="relative overflow-hidden bg-white">
         <Image
           alt="Banner"
           width={1240}
           height={900}
-          className="rounded-none w-full h-[200px] sm:h-[270px] object-cover"
+          className="block w-full h-[185px] sm:h-[250px] object-cover object-center"
           src={bannerImage}
-          style={{ color: 'transparent', minHeight: '100px' }}
+          style={{ color: 'transparent' }}
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center px-4">

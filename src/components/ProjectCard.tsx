@@ -35,7 +35,12 @@ const getVideoSource = (videoId: string) => {
   }
 };
 
+const isRemoteVideoUrl = (video: string) => /^https?:\/\//.test(video);
+
 export const ProjectCard = ({ project, isDetailed = false, allProjects = [] }: ProjectCardProps) => {
+  const mappedVideoSource = project.video ? getVideoSource(project.video) : null;
+  const hasRemoteVideo = Boolean(project.video && isRemoteVideoUrl(project.video));
+  const hasVideo = Boolean(mappedVideoSource || hasRemoteVideo);
 
   if (!isDetailed) {
     return (
@@ -128,18 +133,30 @@ export const ProjectCard = ({ project, isDetailed = false, allProjects = [] }: P
 
       {/* Media Section - Fixed Container */}
       <div className="mb-6 sm:mb-8">
-        {project.video && getVideoSource(project.video) ? (
+        {hasVideo ? (
           <div className="w-full aspect-video rounded-lg overflow-hidden">
-            <Video
-              src={getVideoSource(project.video)!}
-              poster={project.image}
-              className="w-full h-full object-cover"
-              controls
-              playsInline
-              autoPlay
-              muted
-              loop
-            />
+            {hasRemoteVideo && project.video ? (
+              <video
+                src={project.video}
+                poster={project.image}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <Video
+                src={mappedVideoSource!}
+                poster={project.image}
+                className="w-full h-full object-cover"
+                controls
+                playsInline
+                autoPlay
+                muted
+                loop
+              />
+            )}
           </div>
         ) : project.image && (
           <div className="w-full aspect-4/3 relative rounded-lg overflow-hidden bg-black/5 dark:bg-white/5">

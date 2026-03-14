@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { CalButton } from '@/components/ui/cal'
 
 interface CallToActionProps {
   profileImage?: string
@@ -11,22 +12,18 @@ interface CallToActionProps {
 }
 
 export default function CallToAction({
-  profileImage = "/pfp.jpg",
+  profileImage = "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-logo.webp",
   profileAlt = "Profile",
-  linkText = "Book a Free Call",
-  linkUrl = "https://cal.com/atharvsinh/15min",
+  linkText = "Book a Discovery Call",
+  linkUrl = "https://cal.com/uzskicorp/discovery-call?duration=15",
   preText = "If you've read this far, you might be interested in what I do."
 }: CallToActionProps) {
-
   return (
     <div className="mt-4 sm:mt-6 pb-6 sm:pb-8 flex flex-col items-center w-full">
-      <p className="text-neutral-600 dark:text-neutral-400 font-[family-name:var(--font-instrument-serif)] italic text-base sm:text-xl mb-3 sm:mb-3 text-center">{preText}</p>
-      <div className="gradient bg-linear-to-b from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-lg p-[1px] relative overflow-hidden w-auto mt-3 sm:mt-0">
-        <a
-          href={linkUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="gradient h-full bg-zinc-100 dark:bg-zinc-900 rounded-lg text-zinc-900 dark:text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-all group relative overflow-hidden touch-manipulation active:opacity-75"
+      <p className="text-neutral-600 dark:text-neutral-400 font-(family-name:--font-instrument-serif) italic text-base sm:text-xl mb-3 sm:mb-3 text-center">{preText}</p>
+      <div className="gradient bg-linear-to-b from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-lg p-px relative overflow-hidden w-auto mt-3 sm:mt-0">
+        <CalButton
+          className="gradient h-full bg-zinc-100 dark:bg-zinc-900 rounded-lg text-zinc-900 dark:text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-all group relative overflow-hidden touch-manipulation active:opacity-75 cursor-pointer"
           style={{
             '--x': '-90.45457%',
             '--spread': '90deg',
@@ -39,8 +36,9 @@ export default function CallToAction({
             WebkitUserSelect: 'none',
             userSelect: 'none'
           } as React.CSSProperties}
+          aria-label={`Open scheduler: ${linkUrl}`}
         >
-          {/* Shimmer Effect Layer - Light Mode */}
+            {/* Shimmer Effect Layer - Light Mode */}
           <div
             className="absolute inset-0 opacity-50 group-hover:opacity-70 transition-opacity duration-500 dark:hidden z-0"
             style={{
@@ -49,7 +47,7 @@ export default function CallToAction({
               animation: 'shimmer 3s ease-in-out infinite',
             }}
           />
-          {/* Shimmer Effect Layer - Dark Mode */}
+            {/* Shimmer Effect Layer - Dark Mode */}
           <div
             className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-500 hidden dark:block z-0"
             style={{
@@ -105,7 +103,7 @@ export default function CallToAction({
               mask: 'linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) content-box exclude, linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0))'
             }}
           />
-        </a>
+        </CalButton>
       </div>
 
       {/* Quote Section */}
@@ -114,11 +112,11 @@ export default function CallToAction({
         <div className="absolute top-4 left-4 text-6xl sm:text-7xl text-neutral-200 dark:text-neutral-800 font-serif leading-none select-none">&quot;</div>
 
         <div className="relative z-10 pt-6 sm:pt-8">
-          <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg italic font-[family-name:var(--font-instrument-serif)] mb-4">
-            &quot;Man is made by his belief. As he believes, so he is.&quot;
+          <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg italic font-(family-name:--font-instrument-serif) mb-4">
+            &quot;Design is not just what it looks like and feels like. Design is how it works.&quot;
           </p>
           <p className="text-right text-neutral-800 dark:text-neutral-200 font-medium">
-            — Bhagavad Gita
+            — Steve Jobs
           </p>
         </div>
       </div>

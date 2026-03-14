@@ -7,7 +7,6 @@ import Image from "next/image";
 // Tech Stack Data
 const techStack = [
   // Languages
-  { name: "JavaScript", category: "language", icon: "/tech-icons/javascript.svg", color: "bg-gray-500" },
   { name: "TypeScript", category: "language", icon: "/tech-icons/typescript.svg", color: "bg-gray-500" },
   { name: "Java", category: "language", icon: "/tech-icons/java.svg", color: "bg-gray-500" },
   { name: "Python", category: "language", icon: "/tech-icons/python.svg", color: "bg-gray-500" },
@@ -16,13 +15,10 @@ const techStack = [
   // Frameworks & Libraries
   { name: "React.js", category: "framework", icon: "/tech-icons/react.svg", color: "bg-gray-500" },
   { name: "Next.js", category: "framework", icon: "/tech-icons/nextjs.svg", color: "bg-gray-500" },
-  { name: "Express.js", category: "framework", icon: "/tech-icons/express.svg", color: "bg-gray-500" },
-  { name: "Node.js", category: "framework", icon: "/tech-icons/nodejs.svg", color: "bg-gray-500" },
   { name: "FastAPI", category: "framework", icon: "/tech-icons/fastapi.svg", color: "bg-gray-500" },
   { name: "Tailwind CSS", category: "framework", icon: "/tech-icons/tailwind.svg", color: "bg-gray-500" },
   
   // Databases & Tools
-  { name: "MongoDB", category: "database", icon: "/tech-icons/mongodb.svg", color: "bg-gray-500" },
   { name: "PostgreSQL", category: "database", icon: "/tech-icons/postgresql.svg", color: "bg-gray-500" },
   { name: "Redis", category: "database", icon: "/tech-icons/redis.svg", color: "bg-gray-500" },
   
@@ -32,8 +28,6 @@ const techStack = [
   { name: "Azure", category: "tool", icon: "/tech-icons/Azure.svg", color: "bg-gray-500" },
   { name: "AWS", category: "tool", icon: "/tech-icons/AWS.svg", color: "bg-gray-500" },
   { name: "Google Cloud", category: "tool", icon: "/tech-icons/gcp.svg", color: "bg-gray-500" },
-  { name: "Jira", category: "tool", icon: "/tech-icons/Jira.svg", color: "bg-gray-500" },
-  { name: "Nix OS", category: "tool", icon: "/tech-icons/NixOS.svg", color: "bg-gray-500" },
 ];
 
 interface TechIconProps {
@@ -88,7 +82,7 @@ export default function TechStackMarquee({ className = "" }: TechStackMarqueePro
     <div className={`w-full ${className}`}>
       {/* Title - matching other component styles */}
       <div className="mb-4">
-        <h2 className="text-base font-[family-name:var(--font-instrument-serif)] sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 -tracking-[0.01em]">
+        <h2 className="text-base font-[family-name:var(--font-instrument-serif)] sm:text-xl mb-3 opacity-80 mt-4 sm:mt-6 -tracking-[0.01em]">
           Stack I use
         </h2>
         <p className="text-sm sm:text-base dark:text-white/70 text-black/70 leading-relaxed">

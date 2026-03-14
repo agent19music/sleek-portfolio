@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import DiagonalPattern from './DiagonalPattern'
 import BannerSection from './BannerSection'
 import ProfileHeader from './ProfileHeader'
@@ -18,7 +19,7 @@ import { faqs } from '@/data/blogs'
 import { FAQCard } from './FAQCard'
 import GitHubActivity from './GitHubActivity'
 import AboutMe from './AboutMe'
-import SpotifyPlayer from './SpotifyPlayer'
+import { DATA } from '@/app/data/portfolioData'
 
 
 export default function NewHeroSection() {
@@ -35,21 +36,20 @@ export default function NewHeroSection() {
           <Reveal delay={0.1}>
             <BannerSection
               bannerImage="/banner.jpg"
-              quote="You make your own luck if you stay at it long enough."
+              quote="Get inspiration and know what to do with it."
             />
           </Reveal>
 
           {/* Profile Header */}
           <Reveal delay={0.2}>
             <ProfileHeader
-              name="Atharvsinh Jadav"
-              age="15"
-              title="Developer • Builder • Web Dev"
-              profileImage="/pfp.jpg"
+              name={DATA.name}
+              title="Software Engineer • Full-stack"
+              profileImage="https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/seanpfpnobg.webp"
               socialLinks={{
-                twitter: "https://x.com/athrix_codes",
-                github: "https://github.com/Atharvsinh-codez",
-                linkedin: "https://www.linkedin.com/in/atharvsinh-jadav/",
+                twitter: DATA.contact.social.X.url,
+                github: DATA.contact.social.GitHub.url,
+                linkedin: DATA.contact.social.LinkedIn.url,
               }}
             />
           </Reveal>
@@ -59,41 +59,25 @@ export default function NewHeroSection() {
             <div className="text-base">
               {/* Current Role Section */}
               <Reveal delay={0.1}>
-                <ContentSection
-                  subtitle="AI Engineer | Full-stack Developer"
-                  title=''
-                  className="mt-6"
-                >
-                  <div></div>
-                </ContentSection>
+                  <ContentSection
+                    subtitle="Software Engineer • Full-stack "
+                    title=""
+                    className="mt-6"
+                  >
+                    <ContentParagraph className="mb-0 text-base sm:text-lg">
+                      {DATA.summary}
+                    </ContentParagraph>
+                  </ContentSection>
               </Reveal>
 
               <Reveal delay={0.05}>
                 <SectionBorder className="mt-6" />
               </Reveal>
-
-              {/* About Section */}
-              <Reveal delay={0.1}>
-                <ContentSection className="pb-6 sm:pb-8 pt-4 sm:pt-6 px-2 sm:px-0">
-                  <ContentParagraph className="mb-4 text-base sm:text-lg">
-                    <span className="font-medium dark:text-white text-black">I build from zero.</span> Whether it&apos;s frontend, backend, full-stack applications, or AI-powered experiences, I work across the entire development lifecycle. From UI/UX to deployment to user feedback, I care less about technology debates and more about delivering results that people love using.
-                  </ContentParagraph>
-
-                  {/* Spotify Player */}
-                  <div className="mt-4 sm:mt-6 px-2 sm:px-0">
-                    <SpotifyPlayer />
-                  </div>
-                </ContentSection>
-              </Reveal>
-
-              <Reveal delay={0.05}>
-                <SectionBorder className="mt-6" />
-              </Reveal>
-
+              
               {/* Experience Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 py-2">
-                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 px-4 font-[family-name:var(--font-instrument-serif)]">Professional Experience</h2>
+                <div className="sm:px-10 lg:px-12 py-2">
+                  <h2 className="text-base sm:text-xl mb-3  mt-4 sm:mt-6 px-4 opacity-80 font-[family-name:var(--font-instrument-serif)]">Professional Experience</h2>
                   <div className="px-4">
                     <ExperienceContent />
                   </div>
@@ -106,12 +90,12 @@ export default function NewHeroSection() {
 
               {/* Projects / Works */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 py-2">
+                <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity-20 font-[family-name:var(--font-instrument-serif)]">Projects / Works</h2>
+                    <h2 className="text-base sm:text-xl opacity opacity-80 font-[family-name:var(--font-instrument-serif)]">Projects / Works</h2>
                   </div>
                   <div className="px-4">
-                    <div className="grid grid-cols-1 gap-4 sm:gap-3 sm:grid-cols-2 group">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 group">
                       {projects.slice(0, 6).map((project) => (
                         <MasonryProjectCard key={project.id} project={project} />
                       ))}
@@ -132,9 +116,57 @@ export default function NewHeroSection() {
                     <AboutMe />
                   </div>
 
+                  {/* Hackathons Section */}
+                  <div className="px-4 mb-8 sm:mb-10">
+                    <div className="mb-4 sm:mb-5">
+                      <h2 className="text-base sm:text-xl opacity-80 font-(family-name:--font-instrument-serif)">
+                        I like building fast
+                      </h2>
+                      <p className="mt-1 text-xs sm:text-sm text-black/60 dark:text-white/60">
+                        Hackathons I have joined
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                      {DATA.hackathons.map((hackathon) => (
+                        <article
+                          key={`${hackathon.title}-${hackathon.dates}`}
+                          className="rounded-xl border border-neutral-200/70 p-4 transition-all duration-300 dark:border-neutral-800 sm:p-5"
+                        >
+                          <div className="flex items-start gap-3 sm:gap-4">
+                            <div className="mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800 sm:h-12 sm:w-12">
+                              <Image
+                                src={hackathon.image}
+                                alt={hackathon.title}
+                                width={48}
+                                height={48}
+                                className="h-full w-full object-cover"
+                              />
+                            </div>
+
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-sm sm:text-base font-medium text-black dark:text-white leading-snug">
+                                {hackathon.title}
+                              </h3>
+                              <p className="mt-1 text-xs text-black/60 dark:text-white/60">
+                                {hackathon.dates}
+                              </p>
+                              <p className="text-xs text-black/55 dark:text-white/55">
+                                {hackathon.location}
+                              </p>
+                              <p className="mt-3 text-sm leading-relaxed text-black/70 dark:text-white/70">
+                                {hackathon.description}
+                              </p>
+                            </div>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+
                   {/* GitHub Activity Heatmap */}
                   <div className="px-4 mb-4 sm:mb-6">
-                    <GitHubActivity username="Atharvsinh-codez" />
+                    <GitHubActivity username="agent19music" />
                   </div>
                 </div>
               </Reveal>
@@ -145,9 +177,9 @@ export default function NewHeroSection() {
 
               {/* Thoughts Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 py-2">
+                <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity-20 font-[family-name:var(--font-instrument-serif)]">Thoughts</h2>
+                    <h2 className="text-base sm:text-xl opacity-80 font-[family-name:var(--font-instrument-serif)]">Thoughts</h2>
                   </div>
                   <div className="px-4">
                     <div className="space-y-0 group">
@@ -165,7 +197,7 @@ export default function NewHeroSection() {
 
               {/* Tech Stack Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 mt-4 sm:mt-6 mb-4 sm:mb-6">
+                <div className="sm:px-10 lg:px-12 mt-4 sm:mt-6 mb-4 sm:mb-6">
                   <div className="px-4">
                     <TechStackMarquee className="w-full" />
                   </div>
@@ -194,6 +226,12 @@ export default function NewHeroSection() {
                   <Reachout
                     title="Let's connect"
                     subtitle="Find me on these platforms"
+                    socialLinks={{
+                      twitter: DATA.contact.social.X.url,
+                      github: DATA.contact.social.GitHub.url,
+                      linkedin: DATA.contact.social.LinkedIn.url,
+                      mail: `mailto:${DATA.contact.email}`,
+                    }}
                   />
                 </div>
               </Reveal>

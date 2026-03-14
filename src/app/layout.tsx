@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Hanken_Grotesk } from "next/font/google";
+import { Instrument_Serif, Roboto } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 import GradualBlur from "@/components/GradualBlur"
 
-const hkGrotesk = Hanken_Grotesk({
-  weight: ['400'],
+const hkGrotesk = Roboto({
+  weight: ['400', '500', '700'],
   style: 'normal',
   subsets: ['latin'],
   variable: '--font-hk-grotesk',
@@ -22,19 +22,19 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.athrix.me'),
-  title: 'Atharvsinh Jadav',
-  description: 'I build products that solve real problems. Available for new opportunities.',
+  metadataBase: new URL('https://sean.uzskicorp.agency'),
+  title: 'Sean Motanya',
+  description: 'Software Engineer building intentionally designed, impactful applications.',
   openGraph: {
-    url: 'https://www.athrix.me/',
-    siteName: 'Atharvsinh Jadav Portfolio',
+    url: 'https://sean.uzskicorp.agency/',
+    siteName: 'Sean Motanya Portfolio',
     locale: 'en_US',
     type: 'website',
     images: [{
       url: '/open-graph.png',
       width: 1200,
       height: 630,
-      alt: 'Atharvsinh Jadav - Portfolio'
+      alt: 'Sean Motanya - Portfolio'
     }],
   },
 };

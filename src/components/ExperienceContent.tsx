@@ -1,142 +1,76 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ChevronDown } from 'lucide-react'
-import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
+import { DATA } from '@/app/data/portfolioData'
 
 interface ExperienceItem {
   company: string;
-  position: string;
-  duration: string;
+  title: string;
+  start: string;
+  end: string;
+  location: string;
   description: string;
-  achievements?: string[];
   href?: string;
   logoUrl?: string;
 }
 
 export default function ExperienceContent() {
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({})
-
-  const experiences: ExperienceItem[] = [
-    {
-      company: "A4F",
-      position: "AI Model Manager & Project Lead",
-      duration: "September 2025 – December 2025",
-      description: "Managing cutting-edge AI models including OpenAI GPT-5 and Claude Opus 4.5. Overseeing project management, community engagement, and full website development and maintenance.",
-      achievements: [
-        "Providing and managing access to latest AI models including OpenAI GPT-5, Claude Opus 4.5, and other frontier models.",
-        "Leading project management initiatives and coordinating development efforts across the platform.",
-        "Managing and growing the A4F community, ensuring active engagement and user support.",
-        "Developing and maintaining the full A4F website, implementing new features and optimizations.",
-      ],
-      href: "https://a4f.co",
-      logoUrl: "/a4f.png",
-    },
-  ]
-
-  const toggleExpanded = (company: string) => {
-    setExpanded(prev => ({
-      ...prev,
-      [company]: !prev[company]
-    }))
-  }
+  const experiences: ExperienceItem[] = DATA.work.map((item) => ({
+    company: item.company,
+    title: item.title,
+    start: item.start,
+    end: item.end,
+    location: item.location,
+    description: item.description,
+    href: item.href,
+    logoUrl: item.logoUrl,
+  }))
 
   return (
-    <div className="space-y-4 dark:text-white/70 text-black/70 pb-4">
-      {experiences.map((exp) => {
-        const isExpanded = expanded[exp.company]
-
-        return (
-          <div key={exp.company} className="rounded-lg p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-              <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center overflow-hidden shrink-0">
-                  {exp.logoUrl ? (
-                    <Image
-                      src={exp.logoUrl}
-                      alt={exp.company}
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <span className="text-sm sm:text-lg font-medium dark:text-white text-black">
-                      {exp.company.charAt(0)}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium dark:text-white text-black text-sm sm:text-lg">
-                    {exp.href ? (
-                      <Link
-                        href={exp.href}
-                        target="_blank"
-                        className="hover:text-[#006FEE] transition-colors"
-                      >
-                        {exp.company}
-                      </Link>
-                    ) : (
-                      exp.company
-                    )}
-                  </h3>
-                  <p className="text-[10px] sm:text-sm opacity-70">
-                    {exp.position}
-                  </p>
-                </div>
+    <div className="space-y-4 pb-4 text-black/70 dark:text-white/70">
+      {experiences.map((exp) => (
+        <article key={exp.company} className="rounded-xl border border-neutral-200/70 p-4 transition-colors duration-300 dark:border-neutral-800 sm:p-5">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+            <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
+              <div className="mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800 sm:h-12 sm:w-12">
+                {exp.logoUrl ? (
+                  <Image
+                    src={exp.logoUrl}
+                    alt={exp.company}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-sm font-medium text-black dark:text-white">
+                    {exp.company.charAt(0)}
+                  </div>
+                )}
               </div>
 
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="pl-13 sm:pl-0 sm:text-right shrink-0">
-                  <p className="text-[10px] sm:text-sm opacity-50">
-                    {exp.duration}
-                  </p>
-                </div>
-
-                {exp.achievements && exp.achievements.length > 0 && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <button
-                        onClick={() => toggleExpanded(exp.company)}
-                        className="shrink-0 p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-                        aria-expanded={isExpanded}
-                        aria-label={isExpanded ? 'Collapse details' : 'Expand details'}
-                      >
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                        />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      {isExpanded ? 'Collapse details' : 'Expand details'}
-                    </TooltipContent>
-                  </Tooltip>
-                )}
+              <div className="min-w-0 flex-1">
+                <h3 className="text-base font-medium text-black dark:text-white sm:text-lg">
+                  {exp.href ? (
+                    <Link href={exp.href} target="_blank" className="transition-colors hover:text-[#006FEE]">
+                      {exp.company}
+                    </Link>
+                  ) : (
+                    exp.company
+                  )}
+                </h3>
+                <p className="mt-1 text-xs opacity-70 sm:text-sm">{exp.title}</p>
+                <p className="mt-3 text-sm leading-relaxed text-black/70 dark:text-white/70">{exp.description}</p>
               </div>
             </div>
 
-            {exp.achievements && exp.achievements.length > 0 && (
-              <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[1000px] opacity-100 mt-4' : 'max-h-0 opacity-0'
-                  }`}
-              >
-                <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800">
-                  <ul className="space-y-2.5 text-xs sm:text-sm opacity-80">
-                    {exp.achievements.map((achievement, idx) => (
-                      <li key={idx} className="flex gap-2.5">
-                        <span className="text-[#006FEE] shrink-0 mt-1.5">•</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+            <div className="text-left text-xs opacity-60 sm:text-sm lg:min-w-[180px] lg:text-right">
+              <p>{exp.start} - {exp.end}</p>
+              <p className="mt-1">{exp.location}</p>
+            </div>
           </div>
-        )
-      })}
+        </article>
+      ))}
     </div>
   )
 }

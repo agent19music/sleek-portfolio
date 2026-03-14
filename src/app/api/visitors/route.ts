@@ -17,6 +17,7 @@ function getClientIP(request: NextRequest): string | null {
 }
 
 export async function POST(request: NextRequest) {
+  const dbConfigured = Boolean(process.env.DATABASE_URL)
   try {
     const body = await request.json().catch(() => ({}))
     const fingerprint = body.fingerprint as string | undefined
@@ -30,7 +31,8 @@ export async function POST(request: NextRequest) {
     
     return NextResponse.json({
       success: true,
-      uniqueVisitors: data.uniqueVisitors
+      uniqueVisitors: data.uniqueVisitors,
+      dbConfigured,
     })
   } catch (error) {
     console.error('Error tracking visitor:', error)
@@ -39,30 +41,35 @@ export async function POST(request: NextRequest) {
       const stats = await getVisitorStats()
       return NextResponse.json({
         success: true,
-        ...stats
+        ...stats,
+        dbConfigured,
       })
     } catch {
       return NextResponse.json({
         success: false,
         uniqueVisitors: 0,
-        error: 'Failed to track visitor'
+        error: 'Failed to track visitor',
+        dbConfigured,
       }, { status: 500 })
     }
   }
 }
 
 export async function GET() {
+  const dbConfigured = Boolean(process.env.DATABASE_URL)
   try {
     const stats = await getVisitorStats()
     return NextResponse.json({
       success: true,
-      ...stats
+      ...stats,
+      dbConfigured,
     })
   } catch {
     return NextResponse.json({
       success: false,
       uniqueVisitors: 0,
-      error: 'Failed to get visitor stats'
+      error: 'Failed to get visitor stats',
+      dbConfigured,
     }, { status: 500 })
   }
 }

@@ -16,7 +16,7 @@ interface GitHubActivityProps {
     username?: string
 }
 
-export default function GitHubActivity({ username = 'Atharvsinh-codez' }: GitHubActivityProps) {
+export default function GitHubActivity({ username = 'agent19music' }: GitHubActivityProps) {
     const [contributions, setContributions] = useState<ContributionWeek[]>([])
     const [totalContributions, setTotalContributions] = useState(0)
     const [loading, setLoading] = useState(true)
@@ -40,7 +40,7 @@ export default function GitHubActivity({ username = 'Atharvsinh-codez' }: GitHub
                 const data2025 = await response2025.json()
                 const data2026 = await response2026.json()
 
-                // Combine and filter: Feb 2025 to Jan 2026
+                // Combine and filter: Feb 2025 to Mar 2026
                 const allContributions: { date: string; count: number; level: number }[] = []
 
                 // Add 2025 contributions from February onwards
@@ -53,11 +53,11 @@ export default function GitHubActivity({ username = 'Atharvsinh-codez' }: GitHub
                     })
                 }
 
-                // Add 2026 contributions (January only, up to current date)
+                // Add 2026 contributions through March
                 if (data2026.contributions) {
                     data2026.contributions.forEach((day: { date: string; count: number; level: number }) => {
                         const date = new Date(day.date)
-                        if (date.getMonth() === 0) { // January = 0
+                        if (date.getMonth() <= 2) { // Jan-Mar = 0-2
                             allContributions.push(day)
                         }
                     })

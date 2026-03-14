@@ -12,14 +12,14 @@ export default function PortfolioStars() {
     const fetchStars = async () => {
       try {
         // Try our API first
-        const response = await fetch('/api/github-stars?owner=Atharvsinh-codez&repo=sleek-portfolio')
+      const response = await fetch('/api/github-stars?owner=agent19music&repo=sleek-portfolio')
         const data = await response.json()
 
         if (data.success && data.stars > 0) {
           setStarCount(data.stars)
         } else {
           // Fallback: fetch directly from GitHub public API
-          const githubResponse = await fetch('https://api.github.com/repos/Atharvsinh-codez/sleek-portfolio')
+          const githubResponse = await fetch('https://api.github.com/repos/agent19music/sleek-portfolio')
           const githubData = await githubResponse.json()
           if (githubData.stargazers_count !== undefined) {
             setStarCount(githubData.stargazers_count)
@@ -29,7 +29,7 @@ export default function PortfolioStars() {
         console.error('Failed to fetch star count:', error)
         // Try direct GitHub API as fallback
         try {
-          const githubResponse = await fetch('https://api.github.com/repos/Atharvsinh-codez/sleek-portfolio')
+          const githubResponse = await fetch('https://api.github.com/repos/agent19music/sleek-portfolio')
           const githubData = await githubResponse.json()
           if (githubData.stargazers_count !== undefined) {
             setStarCount(githubData.stargazers_count)
@@ -58,7 +58,7 @@ export default function PortfolioStars() {
     <Tooltip>
       <TooltipTrigger asChild>
         <a
-          href="https://github.com/Atharvsinh-codez/sleek-portfolio"
+          href="https://github.com/agent19music/sleek-portfolio"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors duration-200"

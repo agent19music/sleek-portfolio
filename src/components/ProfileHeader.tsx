@@ -4,11 +4,9 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import * as React from 'react';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import PortfolioStars from './PortfolioStars';
 
 interface ProfileHeaderProps {
   name?: string
-  age?: string
   title?: string
   profileImage?: string
   socialLinks?: {
@@ -20,14 +18,13 @@ interface ProfileHeaderProps {
 }
 
 export default function ProfileHeader({
-  name = "Atharvsinh Jadav",
-  age = "15",
-  title = "Developer • Builder • Web Dev",
+  name = "Sean Motanya",
+  title = "Software Engineer • Full-stack",
   profileImage = "/pfp.jpg",
   socialLinks = {
-    twitter: "https://x.com/athrix_codes",
-    github: "https://github.com/Atharvsinh-codez",
-    linkedin: "https://www.linkedin.com/in/atharvsinh-jadav/",
+    twitter: "https://x.com/uzski404",
+    github: "https://github.com/agent19music",
+    linkedin: "https://www.linkedin.com/in/sean-motanya/",
   }
 }: ProfileHeaderProps) {
   const { theme, setTheme } = useTheme();
@@ -38,23 +35,30 @@ export default function ProfileHeader({
   }, []);
 
   return (
-    <div className="flex-col -mt-10">
+    <div className="flex-col pt-3 sm:pt-4">
       <div className="flex items-center justify-between mb-4 sm:ml-8 ml-4 sm:mr-8 mr-4">
         <div
-          className="w-24 h-24 sm:w-28 sm:h-28 relative z-10 rounded-full overflow-hidden bg-cover bg-center shrink-0 ring-4 ring-white dark:ring-white shadow-lg"
+          className="w-[72px] h-[72px] sm:w-[88px] sm:h-[88px] relative z-10 shrink-0 rounded-full bg-white p-[5px] overflow-hidden shadow-md ring-1 ring-black/10"
           role="img"
           aria-label={name}
-          style={{ backgroundImage: `url("${profileImage}")` }}
-        />
-        <PortfolioStars />
+        >
+          <div
+            className="h-full w-full rounded-full overflow-hidden bg-cover bg-center"
+            style={{
+              backgroundImage: `url("${profileImage}")`,
+              backgroundPosition: 'center 28%',
+            }}
+          />
+        </div>
+        {/* <PortfolioStars /> */}
       </div>
       <div className="text-left sm:flex sm:justify-between sm:items-center w-full sm:px-8 px-4 flex-col sm:flex-row">
-        <div className="px-0">
+        <div className="px-0 lg:-ml-1">
           <h1 className="font-[family-name:var(--font-instrument-serif)] italic text-2xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
             {name}
           </h1>
           <p className="opacity-40 text-xs sm:text-sm">
-            {age} • {title}
+            {title}
           </p>
         </div>
         <div className="flex justify-start gap-1 sm:gap-2 mt-3 sm:mt-0 px-0">

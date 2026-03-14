@@ -24,7 +24,8 @@ export default function ContentSection({
       {title && (
         <div className="pb-6">
           {subtitle && (
-            <p className="text-sm sm:text-md opacity-30">{subtitle}</p>
+                 <p className="text-sm sm:text-base dark:text-white/70 text-black/70 leading-relaxed">{subtitle}</p>
+
           )}
           <p 
             className="text-md sm:text-lg font-medium" 

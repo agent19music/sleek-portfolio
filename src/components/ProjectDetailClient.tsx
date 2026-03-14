@@ -17,11 +17,11 @@ export default function ProjectDetailClient({ project, allProjects }: ProjectDet
   return (
     <div className="min-h-screen transition-colors duration-300 relative" style={{ fontFamily: 'var(--font-hk-grotesk)' }}>
       <OnekoCat />
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-6xl">
         <DiagonalPattern side="left" topOffset="0" />
         <DiagonalPattern side="right" topOffset="0" />
         
-        <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl sm:px-0">
+        <div className="mx-auto w-full max-w-6xl px-4 md:px-6 lg:px-8">
           <div className="prose dark:prose-invert max-w-none">
             <div className="text-base">
               <FadeIn delay={0.1} duration={0.5}>

@@ -21,20 +21,21 @@ export default function Reachout({
   title = "Let's connect",
   subtitle = "Find me on these platforms",
   socialLinks = {
-    twitter: "https://x.com/athrix_codes",
-    github: "https://github.com/Atharvsinh-codez",
-    linkedin: "https://www.linkedin.com/in/atharvsinh-jadav/",
+    twitter: "https://x.com/uzski404",
+    github: "https://github.com/agent19music",
+    linkedin: "https://www.linkedin.com/in/sean-motanya/",
+    mail: "mailto:seanmotanya@gmail.com",
   }
 }: ReachoutProps) {
   return (
     <div className="sm:px-12 px-4 pb-24 sm:pb-28">
       <div className="text-left w-full">
         <div className="mb-4 sm:mb-6">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-20 mt-4 sm:mt-6">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-80 mt-4 sm:mt-6">
             {title}
           </h2>
-          <p className="opacity-20 text-md sm:text-lg mb-3 sm:mb-4">
-            {subtitle}
+          <p className="text-sm sm:text-base dark:text-white/70 text-black/70 leading-relaxed">
+          {subtitle}
           </p>
         </div>
 
@@ -180,7 +181,7 @@ export default function Reachout({
         <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
             <div className="text-sm dark:text-white/50 text-black/50 text-center sm:text-left">
-              <p>Design & Developed by <span className="font-medium text-black/70 dark:text-white/70">Atharv</span></p>
+              <p>Design & Developed by <span className="font-medium text-black/70 dark:text-white/70">Sean</span></p>
               <p>© 2026. All rights reserved.</p>
             </div>
             <VisitorCount />
