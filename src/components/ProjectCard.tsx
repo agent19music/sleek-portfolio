@@ -159,13 +159,13 @@ export const ProjectCard = ({ project, isDetailed = false, allProjects = [] }: P
             )}
           </div>
         ) : project.image && (
-          <div className="w-full aspect-4/3 relative rounded-lg overflow-hidden bg-black/5 dark:bg-white/5">
+          <div className="w-full rounded-lg overflow-hidden bg-black/5 dark:bg-white/5">
             <Image
               src={project.image}
               alt={project.title}
               width={1200}
               height={900}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1200px) 70vw, 60vw"
               quality={95}
               priority

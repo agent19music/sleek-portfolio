@@ -6,17 +6,24 @@ interface RevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  disableOnMobile?: boolean;
 }
 
 export const Reveal = ({ 
   children, 
   className = '',
-  delay = 0
+  delay = 0,
+  disableOnMobile = false,
 }: RevealProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (disableOnMobile && window.matchMedia('(max-width: 639px)').matches) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -38,7 +45,7 @@ export const Reveal = ({
     }
 
     return () => observer.disconnect();
-  }, [delay]);
+  }, [delay, disableOnMobile]);
 
   return (
     <div 

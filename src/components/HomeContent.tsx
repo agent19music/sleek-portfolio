@@ -35,7 +35,7 @@ export default function NewHeroSection() {
           {/* Banner Section */}
           <Reveal delay={0.1}>
             <BannerSection
-              bannerImage="/banner.jpg"
+              bannerImage="/banner.png"
               quote="Get inspiration and know what to do with it."
             />
           </Reveal>
@@ -89,7 +89,7 @@ export default function NewHeroSection() {
               </Reveal>
 
               {/* Projects / Works */}
-              <Reveal delay={0.1}>
+              <Reveal delay={0.1} disableOnMobile>
                 <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
                     <h2 className="text-base sm:text-xl opacity opacity-80 font-[family-name:var(--font-instrument-serif)]">Projects / Works</h2>

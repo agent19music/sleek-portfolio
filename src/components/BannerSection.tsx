@@ -9,7 +9,7 @@ interface BannerSectionProps {
 
 export default function BannerSection({
   quote = "Find inspiration and know what do with it.",
-  bannerImage = "/banner.jpg"
+  bannerImage = "/banner.png"
 }: BannerSectionProps) {
   return (
     <div className="w-full mb-2 relative">
