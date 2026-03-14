@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 import GradualBlur from "@/components/GradualBlur"
 import { DynamicTitle } from "@/components/DynamicTitle"
+import GoogleAnalytics from "@/components/GoogleAnalytics"
 
 const hkGrotesk = Roboto({
   weight: ['400', '500', '700'],
@@ -104,6 +105,7 @@ export default function RootLayout({
         <DynamicTitle />
       </head>
       <body className={`${hkGrotesk.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
+        <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
