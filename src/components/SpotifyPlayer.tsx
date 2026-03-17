@@ -3,6 +3,25 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+function VinylDisc({ spinning = false, className = '' }: { spinning?: boolean; className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      className={`h-11 w-11 shrink-0 ${spinning ? 'animate-[spin_3s_linear_infinite]' : ''} ${className}`}
+      aria-hidden="true"
+    >
+      <circle cx="24" cy="24" r="23" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
+      <circle cx="24" cy="24" r="18" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
+      <circle cx="24" cy="24" r="15" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
+      <circle cx="24" cy="24" r="12" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
+      <circle cx="24" cy="24" r="9" fill="none" stroke="#333" strokeWidth="0.5" />
+      <circle cx="24" cy="24" r="7" fill="#b91c1c" />
+      <circle cx="24" cy="24" r="2" fill="#1a1a1a" />
+      <circle cx="24" cy="24" r="0.8" fill="#666" />
+    </svg>
+  )
+}
+
 interface SpotifyPlayerProps {
   apiUrl?: string
   pollMs?: number
@@ -87,13 +106,7 @@ export default function SpotifyPlayer({
                 <div className="mt-2 h-3 w-32 rounded bg-neutral-200/70 dark:bg-neutral-800/70" />
               </div>
             </div>
-            <Image
-              src="/pixel-art-vinyl-record-vector.png"
-              alt="Vinyl record"
-              width={48}
-              height={48}
-              className="h-11 w-11 shrink-0 opacity-40"
-            />
+            <VinylDisc spinning={false} className="opacity-40" />
           </div>
         ) : (
         <div className="flex items-center gap-4">
@@ -139,13 +152,7 @@ export default function SpotifyPlayer({
             {uiArtists ? <p className="text-sm text-[#1DB954]">by {uiArtists}</p> : null}
           </div>
 
-          <Image
-            src="/pixel-art-vinyl-record-vector.png"
-            alt="Vinyl record"
-            width={48}
-            height={48}
-            className="h-11 w-11 shrink-0 animate-[spin_4s_linear_infinite]"
-          />
+          <VinylDisc spinning />
         </div>
         )}
 
