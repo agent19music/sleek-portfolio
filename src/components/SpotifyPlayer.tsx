@@ -10,14 +10,25 @@ function VinylDisc({ spinning = false, className = '' }: { spinning?: boolean; c
       className={`h-11 w-11 shrink-0 ${spinning ? 'animate-[spin_3s_linear_infinite]' : ''} ${className}`}
       aria-hidden="true"
     >
-      <circle cx="24" cy="24" r="23" fill="#1a1a1a" stroke="#333" strokeWidth="1" />
-      <circle cx="24" cy="24" r="18" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
-      <circle cx="24" cy="24" r="15" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
-      <circle cx="24" cy="24" r="12" fill="none" stroke="#2a2a2a" strokeWidth="0.5" />
-      <circle cx="24" cy="24" r="9" fill="none" stroke="#333" strokeWidth="0.5" />
+      <defs>
+        <linearGradient id="vinyl-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="white" stopOpacity="0" />
+          <stop offset="35%" stopColor="white" stopOpacity="0" />
+          <stop offset="50%" stopColor="white" stopOpacity="0.12" />
+          <stop offset="65%" stopColor="white" stopOpacity="0" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <circle cx="24" cy="24" r="23" fill="#1a1a1a" stroke="#444" strokeWidth="1" />
+      <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.13)" strokeWidth="0.8" />
+      <circle cx="24" cy="24" r="17" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="0.8" />
+      <circle cx="24" cy="24" r="14" fill="none" stroke="rgba(255,255,255,0.13)" strokeWidth="0.8" />
+      <circle cx="24" cy="24" r="11" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="0.8" />
+      <circle cx="24" cy="24" r="8.5" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
       <circle cx="24" cy="24" r="7" fill="#b91c1c" />
       <circle cx="24" cy="24" r="2" fill="#1a1a1a" />
       <circle cx="24" cy="24" r="0.8" fill="#666" />
+      <circle cx="24" cy="24" r="23" fill="url(#vinyl-sheen)" />
     </svg>
   )
 }
