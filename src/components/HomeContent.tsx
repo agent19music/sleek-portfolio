@@ -19,6 +19,7 @@ import { faqs } from '@/data/blogs'
 import { FAQCard } from './FAQCard'
 import GitHubActivity from './GitHubActivity'
 import AboutMe from './AboutMe'
+import SpotifyPlayer from './SpotifyPlayer'
 import { DATA } from '@/app/data/portfolioData'
 
 
@@ -114,6 +115,10 @@ export default function NewHeroSection() {
                   {/* About Me Section */}
                   <div className="px-4 mt-8 sm:mt-10 mb-8 sm:mb-10">
                     <AboutMe />
+                  </div>
+
+                  <div className="px-4 mb-8 sm:mb-10">
+                    <SpotifyPlayer />
                   </div>
 
                   {/* Hackathons Section */}
