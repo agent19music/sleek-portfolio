@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { useState } from 'react'
 import Image from 'next/image'
 import DiagonalPattern from './DiagonalPattern'
 import BannerSection from './BannerSection'
@@ -24,6 +24,9 @@ import { DATA } from '@/app/data/portfolioData'
 
 
 export default function NewHeroSection() {
+  const [showAllProjects, setShowAllProjects] = useState(false)
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, 4)
+
   return (
     <div className="min-h-screen transition-colors duration-300 relative" style={{ fontFamily: 'var(--font-hk-grotesk)' }}>
       <div className="relative mx-auto max-w-4xl">
@@ -78,7 +81,7 @@ export default function NewHeroSection() {
               {/* Experience Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-10 lg:px-12 py-2">
-                  <h2 className="text-base sm:text-xl mb-3  mt-4 sm:mt-6 px-4 opacity-80 font-[family-name:var(--font-instrument-serif)]">Professional Experience</h2>
+                  <h2 className="text-base sm:text-xl mb-3  mt-4 sm:mt-6 px-4 opacity-80 font-(family-name:--font-instrument-serif)">Professional Experience</h2>
                   <div className="px-4">
                     <ExperienceContent />
                   </div>
@@ -93,24 +96,28 @@ export default function NewHeroSection() {
               <Reveal delay={0.1} disableOnMobile>
                 <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity opacity-80 font-[family-name:var(--font-instrument-serif)]">Projects / Works</h2>
+                    <h2 className="text-base sm:text-xl opacity opacity-80 font-(family-name:--font-instrument-serif)">Projects / Works</h2>
                   </div>
                   <div className="px-4">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 group">
-                      {projects.slice(0, 6).map((project) => (
+                      {visibleProjects.map((project) => (
                         <MasonryProjectCard key={project.id} project={project} />
                       ))}
                     </div>
                   </div>
-                  <div className="px-4 flex justify-end mt-6 sm:mt-8 mb-4 sm:mb-6">
-                    <Link
-                      href="/projects"
-                      className="text-xs sm:text-sm text-black/50 dark:text-white/50 hover:text-black/80 dark:hover:text-white/80 transition-colors inline-flex items-center gap-1"
-                    >
-                      View All
-                      <span>→</span>
-                    </Link>
-                  </div>
+                  {projects.length > 4 ? (
+                    <div className="px-4 flex justify-end mt-6 sm:mt-8 mb-4 sm:mb-6">
+                      <button
+                        type="button"
+                        onClick={() => setShowAllProjects((v) => !v)}
+                        aria-expanded={showAllProjects}
+                        className="text-xs sm:text-sm text-black/50 dark:text-white/50 hover:text-black/80 dark:hover:text-white/80 transition-colors inline-flex items-center gap-1"
+                      >
+                        {showAllProjects ? 'View less' : 'View more'}
+                        <span>→</span>
+                      </button>
+                    </div>
+                  ) : null}
 
                   {/* About Me Section */}
                   <div className="px-4 mt-8 sm:mt-10 mb-8 sm:mb-10">
@@ -139,14 +146,16 @@ export default function NewHeroSection() {
                           className="rounded-xl border border-neutral-200/70 p-4 transition-all duration-300 dark:border-neutral-800 sm:p-5"
                         >
                           <div className="flex items-start gap-3 sm:gap-4">
-                            <div className="mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800 sm:h-12 sm:w-12">
-                              <Image
-                                src={hackathon.image}
-                                alt={hackathon.title}
-                                width={48}
-                                height={48}
-                                className="h-full w-full object-cover"
-                              />
+                            <div className="mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-transparent ring-1 ring-neutral-200/60 dark:ring-neutral-800/60 sm:h-12 sm:w-12">
+                              <div className="flex h-full w-full items-center justify-center p-0">
+                                <Image
+                                  src={hackathon.image}
+                                  alt={hackathon.title}
+                                  width={48}
+                                  height={48}
+                                  className="h-full w-full object-contain"
+                                />
+                              </div>
                             </div>
 
                             <div className="min-w-0 flex-1">
@@ -184,7 +193,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1}>
                 <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity-80 font-[family-name:var(--font-instrument-serif)]">Thoughts</h2>
+                    <h2 className="text-base sm:text-xl opacity-80 font-(family-name:--font-instrument-serif)">Thoughts</h2>
                   </div>
                   <div className="px-4">
                     <div className="space-y-0 group">

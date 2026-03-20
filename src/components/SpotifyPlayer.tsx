@@ -47,6 +47,7 @@ export default function SpotifyPlayer({
   const [uiSongName, setUiSongName] = useState<string | null>(null)
   const [uiArtists, setUiArtists] = useState<string | null>(null)
   const [uiLabel, setUiLabel] = useState<'Now playing' | 'Last played'>('Now playing')
+  const [uiSpinning, setUiSpinning] = useState(false)
   const [status, setStatus] = useState<'loading' | 'ready' | 'empty'>('loading')
 
   useEffect(() => {
@@ -81,17 +82,20 @@ export default function SpotifyPlayer({
           setUiAlbumArt(null)
           setUiSongName(null)
           setUiArtists(null)
+          setUiSpinning(false)
           return
         }
 
         setStatus('ready')
         if (data.label) setUiLabel(data.label)
+        setUiSpinning(Boolean(data.isPlaying) || data.label === 'Now playing')
         setUiTrackUrl(data.trackUrl ?? null)
         setUiAlbumArt(data.albumArt ?? null)
         setUiSongName(data.songName ?? null)
         setUiArtists(data.artists ?? null)
       } catch {
         setStatus('empty')
+        setUiSpinning(false)
       }
     }
 
@@ -163,7 +167,7 @@ export default function SpotifyPlayer({
             {uiArtists ? <p className="text-sm text-[#1DB954]">by {uiArtists}</p> : null}
           </div>
 
-          <VinylDisc spinning />
+          <VinylDisc spinning={uiSpinning} />
         </div>
         )}
 

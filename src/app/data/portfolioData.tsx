@@ -184,8 +184,7 @@ export const DATA = {
           icon: "globe",
         },
       ],
-      image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/Screenshot_20251018_090735.png",
+      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/new-uniwell.png",
       video: "",
     },
     {
@@ -206,6 +205,25 @@ export const DATA = {
       ],
       image:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-corp.png",
+      video: "",
+    },
+    {
+      title: "Zentiri",
+      href: "https://zentiri.app",
+      dates: "Feb 2026 - Present",
+      active: true,
+      description:
+        "Zentiri gives founders and HR leaders the tools they need to recruit top talent, automate onboarding workflows, and foster a high-performing culture from day one. ",
+      technologies: ["Next.js", "TypeScript", "Supabase"],
+      oneLiner: "Hiring and onboarding platform for startups",
+      links: [
+        {
+          type: "Website",
+          href: "https://zentiri.app",
+          icon: "globe",
+        },
+      ],
+      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing.png",
       video: "",
     },
   ],

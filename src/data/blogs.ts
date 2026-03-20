@@ -7,11 +7,11 @@ export const faqs: FAQ[] = [
     answer: `I was born too soon as a Tech enthusiast.
 
     It's insane to me that guys like Taher Elgamal and Linus Torvalds are legit still alive and middle aged regular guys. 
-    These are people who built the foundation of the internet and operating systems that make systems operate today, we're talking about.
+    These are people who built the foundation of the internet and operating systems that make infrastructure operate today, we're talking about.
     The internet itself is just 30 years old. I mean, the phone in my pocket right now would seem like something out of a sci-fi movie for guys just 20 years ago.
     I know the evolution of technology is not a linear process, but it's still very interesting to think about.
     Makes me sad a bit about all the tech I'll probably never get to experience.
-    Imagine the tech scene in 2126. Will kids be still making B2B SaaS apps? Will the tools and frameworks be the same as we use today?
+    Imagine the tech scene in 2126. Will kids still be making B2B SaaS apps? Will the tools and frameworks be the same as we use today?
     How far can the abstraction layer go now that you can voice command an AI and it whips up a codebase for you?
    I was just explaining to my grandpa what google images is and what I do for work and he had no idea what I was talking about.It was all like actual magic to him.
    Makes me wonder, will I be the grandpa one day not understanding the tech that kids are using day to day?
