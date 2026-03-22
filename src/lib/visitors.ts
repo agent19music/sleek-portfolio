@@ -1,4 +1,5 @@
-import { neon } from '@neondatabase/serverless'
+import 'server-only'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 export interface VisitorData {
   uniqueVisitors: number
@@ -13,16 +14,46 @@ function logVisitorError(message: string, error: unknown) {
   }
 }
 
-function getSqlClient() {
-  const connection = process.env.DATABASE_URL
-  if (!connection) {
+let cachedSupabaseClient: SupabaseClient | null = null
+
+function getSupabaseEnv() {
+  // Prefer a server-only URL variable, with backward-compatible fallback.
+  const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  return {
+    supabaseUrl,
+    serviceRoleKey,
+  }
+}
+
+export function isVisitorDbConfigured(): boolean {
+  const { supabaseUrl, serviceRoleKey } = getSupabaseEnv()
+  return Boolean(supabaseUrl && serviceRoleKey)
+}
+
+function getSupabaseClient(): SupabaseClient | null {
+  const { supabaseUrl, serviceRoleKey } = getSupabaseEnv()
+
+  if (!supabaseUrl || !serviceRoleKey) {
     return null
   }
 
+  if (cachedSupabaseClient) {
+    return cachedSupabaseClient
+  }
+
   try {
-    return neon(connection)
+    cachedSupabaseClient = createClient(supabaseUrl, serviceRoleKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    })
+
+    return cachedSupabaseClient
   } catch (error) {
-    logVisitorError('Invalid DATABASE_URL for Neon client:', error)
+    logVisitorError('Invalid Supabase configuration for visitor tracking:', error)
     return null
   }
 }
@@ -38,21 +69,22 @@ export function generateVisitorId(ip: string | null, userAgent: string | null, f
 }
 
 export async function initVisitorTable(): Promise<void> {
-  const sql = getSqlClient()
-  if (!sql) return
+  const supabase = getSupabaseClient()
+  if (!supabase) return
 
-  await sql`
-    CREATE TABLE IF NOT EXISTS visitors (
-      id SERIAL PRIMARY KEY,
-      visitor_id TEXT UNIQUE NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-  `
+  const { error } = await supabase
+    .from('visitors')
+    .select('id', { head: true, count: 'exact' })
+    .limit(1)
+
+  if (error) {
+    throw error
+  }
 }
 
 export async function trackVisit(visitorId: string): Promise<VisitorData> {
-  const sql = getSqlClient()
-  if (!sql) {
+  const supabase = getSupabaseClient()
+  if (!supabase) {
     return { uniqueVisitors: 0 }
   }
 
@@ -64,15 +96,24 @@ export async function trackVisit(visitorId: string): Promise<VisitorData> {
     }
 
     // Insert visitor if not exists
-    await sql`
-      INSERT INTO visitors (visitor_id)
-      VALUES (${visitorId})
-      ON CONFLICT (visitor_id) DO NOTHING
-    `
+    const { error: upsertError } = await supabase
+      .from('visitors')
+      .upsert({ visitor_id: visitorId }, { onConflict: 'visitor_id', ignoreDuplicates: true })
+
+    if (upsertError) {
+      throw upsertError
+    }
 
     // Get count
-    const result = await sql`SELECT COUNT(*) as count FROM visitors`
-    const uniqueCount = parseInt(result[0]?.count || '0', 10)
+    const { count, error: countError } = await supabase
+      .from('visitors')
+      .select('*', { head: true, count: 'exact' })
+
+    if (countError) {
+      throw countError
+    }
+
+    const uniqueCount = count ?? 0
 
     return { uniqueVisitors: uniqueCount }
   } catch (error) {
@@ -82,8 +123,8 @@ export async function trackVisit(visitorId: string): Promise<VisitorData> {
 }
 
 export async function getVisitorStats(): Promise<{ uniqueVisitors: number }> {
-  const sql = getSqlClient()
-  if (!sql) {
+  const supabase = getSupabaseClient()
+  if (!supabase) {
     return { uniqueVisitors: 0 }
   }
 
@@ -94,8 +135,15 @@ export async function getVisitorStats(): Promise<{ uniqueVisitors: number }> {
       didInitTable = true
     }
 
-    const result = await sql`SELECT COUNT(*) as count FROM visitors`
-    const uniqueCount = parseInt(result[0]?.count || '0', 10)
+    const { count, error: countError } = await supabase
+      .from('visitors')
+      .select('*', { head: true, count: 'exact' })
+
+    if (countError) {
+      throw countError
+    }
+
+    const uniqueCount = count ?? 0
     return { uniqueVisitors: uniqueCount }
   } catch (error) {
     logVisitorError('Error getting visitor stats:', error)

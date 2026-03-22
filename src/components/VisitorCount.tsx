@@ -32,6 +32,7 @@ function getOrdinalSuffix(value: number): 'st' | 'nd' | 'rd' | 'th' {
 export function VisitorCount({ className }: { className?: string }) {
   const [stats, setStats] = useState<VisitorStats | null>(null)
   const [loading, setLoading] = useState(true)
+  const VISITOR_UI_COMPENSATION = 156
 
   useEffect(() => {
     async function trackAndFetchStats() {
@@ -55,7 +56,8 @@ export function VisitorCount({ className }: { className?: string }) {
         if (response.ok) {
           const data = await response.json()
           setStats({
-            uniqueVisitors: data.uniqueVisitors || 0,
+            // Temporary manual compensation requested by user.
+            uniqueVisitors: (data.uniqueVisitors || 0) + VISITOR_UI_COMPENSATION,
             dbConfigured: data.dbConfigured,
           })
         }
@@ -88,7 +90,7 @@ export function VisitorCount({ className }: { className?: string }) {
     return (
       <div className={`inline-flex items-center gap-2.5 bg-neutral-100 dark:bg-neutral-800 rounded-full px-4 py-2.5 ${className || ''}`}>
         <span className="text-sm text-neutral-600 dark:text-neutral-400">
-          Visitor tracking disabled (Neon not configured)
+          Visitor tracking disabled (database not configured)
         </span>
       </div>
     )

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { headers } from 'next/headers'
-import { trackVisit, generateVisitorId, getVisitorStats } from '@/lib/visitors'
+import { trackVisit, generateVisitorId, getVisitorStats, isVisitorDbConfigured } from '@/lib/visitors'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -17,7 +17,7 @@ function getClientIP(request: NextRequest): string | null {
 }
 
 export async function POST(request: NextRequest) {
-  const dbConfigured = Boolean(process.env.DATABASE_URL)
+  const dbConfigured = isVisitorDbConfigured()
   try {
     const body = await request.json().catch(() => ({}))
     const fingerprint = body.fingerprint as string | undefined
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  const dbConfigured = Boolean(process.env.DATABASE_URL)
+  const dbConfigured = isVisitorDbConfigured()
   try {
     const stats = await getVisitorStats()
     return NextResponse.json({
