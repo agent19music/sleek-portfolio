@@ -62,7 +62,7 @@ export const DATA = {
       location: "Nairobi, KE",
       title: "Founder and CEO | Technical Lead",
       logoUrl: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-logo.webp",
-      start: "Sep 2024",
+      start: "Jan 2026",
       end: "present",
       description:
         "Currently working as Technical Lead at Uzski Corp, a software development, design and brand consulting company. I head product development and specialize in system design, platforms architecture  and end to end project delivery.",
