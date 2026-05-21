@@ -27,17 +27,22 @@ export const Reveal = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (delay > 0) {
+          // Halve the requested delay so the reveal feels more responsive
+          const adjusted = delay * 0.5;
+          if (adjusted > 0) {
             setTimeout(() => {
               setIsVisible(true);
-            }, delay * 1000);
+            }, adjusted * 1000);
           } else {
             setIsVisible(true);
           }
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      // Fire as soon as any sliver enters the viewport, and pre-trigger
+      // 15% above the fold so tall sections (e.g. Projects) don't appear
+      // to reveal "late" when their top edge crosses into view.
+      { threshold: 0, rootMargin: '0px 0px 15% 0px' }
     );
 
     if (ref.current) {
@@ -48,10 +53,10 @@ export const Reveal = ({
   }, [delay, disableOnMobile]);
 
   return (
-    <div 
+    <div
       ref={ref}
-      className={`${className} transition-all duration-500 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+      className={`${className} transition-all duration-300 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
       }`}
     >
       {children}

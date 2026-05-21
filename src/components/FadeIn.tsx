@@ -9,14 +9,18 @@ interface FadeInProps {
   className?: string
 }
 
-export default function FadeIn({ 
-  children, 
-  delay = 0, 
+export default function FadeIn({
+  children,
+  delay = 0,
   duration = 0.5,
   className = ''
 }: FadeInProps) {
   const [isVisible, setIsVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+
+  // Halve both delay and duration to make the reveal snappier (~50% less obnoxious)
+  const adjustedDelay = delay * 0.5
+  const adjustedDuration = duration * 0.5
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,11 +28,13 @@ export default function FadeIn({
         if (entry.isIntersecting) {
           setTimeout(() => {
             setIsVisible(true)
-          }, delay * 1000)
+          }, adjustedDelay * 1000)
           observer.disconnect()
         }
       },
-      { threshold: 0.1 }
+      // Fire as soon as the element enters the viewport, with a 15% bottom
+      // pre-trigger so tall sections don't appear to reveal "late".
+      { threshold: 0, rootMargin: '0px 0px 15% 0px' }
     )
 
     if (ref.current) {
@@ -36,7 +42,7 @@ export default function FadeIn({
     }
 
     return () => observer.disconnect()
-  }, [delay])
+  }, [adjustedDelay])
 
   return (
     <div
@@ -44,7 +50,7 @@ export default function FadeIn({
       className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transition: `opacity ${duration}s ease-out`,
+        transition: `opacity ${adjustedDuration}s ease-out`,
       }}
     >
       {children}

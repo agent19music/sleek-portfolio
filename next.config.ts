@@ -31,8 +31,15 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'i.scdn.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'tapback.co',
+      },
     ],
   },
 };
 
-export default withNextVideo(nextConfig);
+const videoConfig = withNextVideo(nextConfig) as NextConfig & { turbopack?: unknown };
+delete videoConfig.turbopack;
+
+export default videoConfig;
