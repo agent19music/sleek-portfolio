@@ -1,7 +1,8 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { ChevronLeft, Monitor, Moon, Smartphone, Sun } from 'lucide-react'
+import { CaretLeftIcon as ChevronLeft, SunIcon as Sun, MoonIcon as Moon, DeviceMobileCameraIcon as Smartphone, MonitorIcon as Monitor } from '@phosphor-icons/react'
+
 
 export type PreviewMode = 'desktop' | 'mobile'
 export type Theme = 'dark' | 'light'
@@ -60,22 +61,7 @@ export function LornaShell({
         "
       >
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={backDisabled ? undefined : onBack}
-            disabled={backDisabled}
-            aria-disabled={backDisabled || undefined}
-            tabIndex={backDisabled ? -1 : 0}
-            className={
-              backDisabled
-                ? 'inline-flex items-center gap-1.5 rounded-[8px] px-2 py-1 text-[13px] text-[var(--color-fog-grey)] opacity-50 cursor-not-allowed'
-                : 'inline-flex items-center gap-1.5 rounded-[8px] px-2 py-1 text-[13px] text-[var(--color-light-steel)] hover:text-[var(--color-porcelain)] hover:bg-[var(--color-graphite)] active:bg-[var(--color-deep-slate)] transition-colors'
-            }
-            aria-label="Back to gallery"
-          >
-            <ChevronLeft className="w-3.5 h-3.5" aria-hidden />
-            <span style={{ letterSpacing: '-0.11px' }}>Back</span>
-          </button>
+    
 
           <div className="hidden sm:block h-4 w-px bg-[var(--color-muted-ash)]" />
 
@@ -97,6 +83,7 @@ export function LornaShell({
           </div>
         </div>
 
+        {}
         <div className="flex items-center gap-2">
           {/* Mode toggle */}
           {mode && onModeChange ? (
@@ -104,7 +91,7 @@ export function LornaShell({
               role="group"
               aria-label="Preview mode"
               className="
-                inline-flex items-center gap-0.5
+                hidden sm:inline-flex items-center gap-0.5
                 border border-[var(--color-charcoal-grey)]
                 rounded-[10px] p-1
                 bg-[var(--color-graphite)]
@@ -289,6 +276,8 @@ const lornaTokens = `
   --shadow-subtle-2: rgba(0, 0, 0, 0.18) 0px 0px 0px 1px;
   --shadow-subtle-6: rgba(255, 255, 255, 0.04) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.4) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 4px 8px 0px;
   --shadow-xl: rgba(0, 0, 0, 0.35) 0px 12px 48px -8px, rgba(0, 0, 0, 0.2) 0px 4px 16px -4px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
 
   background: var(--color-pitch-black);
   color: var(--color-porcelain);
@@ -320,6 +309,8 @@ const lornaTokens = `
   --shadow-subtle-2: rgba(15, 17, 21, 0.06) 0px 0px 0px 1px;
   --shadow-subtle-6: rgba(15, 17, 21, 0.03) 0px 0px 0px 1px inset, rgba(15, 17, 21, 0.04) 0px 1px 0px 0px inset, rgba(15, 17, 21, 0.05) 0px 0px 0px 1px, rgba(15, 17, 21, 0.03) 0px 4px 8px 0px;
   --shadow-xl: rgba(15, 17, 21, 0.08) 0px 12px 48px -8px, rgba(15, 17, 21, 0.04) 0px 4px 16px -4px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.06);
 }
 
 .lorna-root .lorna-mono {

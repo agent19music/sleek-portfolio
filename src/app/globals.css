@@ -41,6 +41,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
@@ -115,6 +117,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.06);
 }
 
 .dark {
@@ -150,6 +154,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 @layer base {

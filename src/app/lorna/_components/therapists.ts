@@ -13,6 +13,7 @@ export interface Therapist {
   /** tapback color index, 0-17 */
   avatarColor: number
   location?: string
+  status?: 'pending' | 'confirmed'
 }
 
 export const therapists: Therapist[] = [
@@ -26,6 +27,7 @@ export const therapists: Therapist[] = [
     sessionTime: '3:00 PM',
     modality: 'video',
     avatarColor: 2,
+    status: 'pending',
   },
   {
     id: 't2',
@@ -38,6 +40,7 @@ export const therapists: Therapist[] = [
     modality: 'in-person',
     avatarColor: 5,
     location: 'Studio 4 · 2nd floor',
+    status: 'confirmed',
   },
 ]
 

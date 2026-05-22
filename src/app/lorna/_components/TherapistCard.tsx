@@ -26,17 +26,40 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
   return (
     <article
       className="
-        bg-[var(--color-graphite)]
+        bg-[var(--color-charcoal-grey)]/40
         rounded-[12px]
         px-4 py-3
         flex flex-col @sm:flex-row @sm:items-center gap-3
-        [box-shadow:var(--shadow-subtle)]
-        hover:bg-[var(--color-deep-slate)]
-        transition-colors duration-150
+        border border-[var(--color-charcoal-grey)]
+        [box-shadow:var(--shadow-card)]
+        hover:bg-[var(--color-charcoal-grey)]/60
+        hover:-translate-y-0.5
+        hover:[box-shadow:var(--shadow-card-hover)]
+        transition-all duration-200 ease-out
+        relative
       "
     >
+      {/* Mobile-only status badge - absolute top right */}
+      {therapist.status && (
+        <span
+          className={`
+            absolute top-3 right-4 @sm:hidden
+            inline-flex items-center justify-center
+            rounded-full px-2.5 py-0.5 text-[11px] font-medium
+            ${
+              therapist.status === 'pending'
+                ? 'bg-[#F59E0B] text-white'
+                : 'bg-[#10B981] text-white'
+            }
+          `}
+          style={{ letterSpacing: '-0.1px' }}
+        >
+          {therapist.status === 'pending' ? 'Pending' : 'Confirmed'}
+        </span>
+      )}
+
       {/* Top row on mobile / left side on desktop: avatar + identity */}
-      <div className="flex items-center gap-3 min-w-0 @sm:flex-1">
+      <div className="flex items-center gap-3 min-w-0 pr-16 @sm:pr-0 @sm:flex-1">
         <div className="shrink-0">
           <Image
             src={avatarUrl(therapist)}
@@ -78,24 +101,42 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
           <span className="mx-1 text-[var(--color-fog-grey)]">·</span>
           {therapist.sessionTime}
         </span>
-        <span
-          className="
-            inline-flex items-center gap-1
-            bg-[var(--color-gunmetal)]
-            text-[var(--color-storm-cloud)]
-            rounded-[6px]
-            px-1.5 py-px
-            text-[11px]
-          "
-          style={{ letterSpacing: '-0.1px' }}
-        >
-          {isVideo ? (
-            <Video className="w-2.5 h-2.5" aria-hidden />
-          ) : (
-            <MapPin className="w-2.5 h-2.5" aria-hidden />
+        <div className="flex items-center gap-1.5">
+          {therapist.status && (
+            <span
+              className={`
+                inline-flex items-center justify-center
+                rounded-full px-2.5 py-0.5 text-[11px] font-medium
+                ${
+                  therapist.status === 'pending'
+                    ? 'bg-[#F59E0B] text-white'
+                    : 'bg-[#10B981] text-white'
+                }
+              `}
+              style={{ letterSpacing: '-0.1px' }}
+            >
+              {therapist.status === 'pending' ? 'Pending' : 'Confirmed'}
+            </span>
           )}
-          {modalityLabel}
-        </span>
+          <span
+            className="
+              inline-flex items-center gap-1
+              bg-[var(--color-gunmetal)]
+              text-[var(--color-storm-cloud)]
+              rounded-[6px]
+              px-1.5 py-px
+              text-[11px]
+            "
+            style={{ letterSpacing: '-0.1px' }}
+          >
+            {isVideo ? (
+              <Video className="w-2.5 h-2.5" aria-hidden />
+            ) : (
+              <MapPin className="w-2.5 h-2.5" aria-hidden />
+            )}
+            {modalityLabel}
+          </span>
+        </div>
       </div>
 
       {/* Desktop CTA — high-contrast inverted button (Vercel-style) */}

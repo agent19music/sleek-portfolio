@@ -11,15 +11,23 @@ const upcomingCount = therapists.length
  */
 export function BookedTherapistsMockup() {
   return (
-    <div className="bg-[var(--color-pitch-black)] w-full h-full">
-      <div className="px-5 @sm:px-6 py-6 @sm:py-8">
+    <div className="bg-[var(--color-graphite)] w-full h-full relative">
+      {/* Dark mode mesh pattern for surface texture (optional, highly transparent) */}
+      <div 
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none" 
+        style={{
+          backgroundImage: 'radial-gradient(var(--color-porcelain) 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+      <div className="px-5 @sm:px-6 py-6 @sm:py-8 relative z-10">
         {/* Header */}
         <header>
           <p
             className="lorna-mono text-[11px] uppercase text-[var(--color-fog-grey)]"
             style={{ letterSpacing: '-0.1px' }}
           >
-            This week
+            Theraply
           </p>
           <h1
             className="mt-2 text-[26px] @sm:text-[30px] leading-[1.15] text-[var(--color-porcelain)]"
