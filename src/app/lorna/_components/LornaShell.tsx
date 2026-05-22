@@ -61,7 +61,27 @@ export function LornaShell({
         "
       >
         <div className="flex items-center gap-3">
-    
+          <button
+            type="button"
+            onClick={onBack}
+            disabled={backDisabled || !onBack}
+            aria-label="Go back"
+            className="
+              inline-flex items-center justify-center
+              h-8 w-8
+              rounded-full
+              border border-[var(--color-charcoal-grey)]
+              bg-[var(--color-graphite)]
+              text-[var(--color-light-steel)]
+              hover:text-[var(--color-porcelain)]
+              hover:border-[var(--color-muted-ash)]
+              active:bg-[var(--color-deep-slate)]
+              disabled:opacity-50 disabled:cursor-not-allowed
+              transition-colors
+            "
+          >
+            <ChevronLeft className="w-3.5 h-3.5" aria-hidden />
+          </button>
 
           <div className="hidden sm:block h-4 w-px bg-[var(--color-muted-ash)]" />
 

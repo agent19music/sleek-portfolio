@@ -11,7 +11,7 @@ const upcomingCount = therapists.length
  */
 export function BookedTherapistsMockup() {
   return (
-    <div className="bg-[var(--color-graphite)] w-full h-full relative">
+    <div className="bg-[var(--color-deep-slate)] w-full h-full relative">
       {/* Dark mode mesh pattern for surface texture (optional, highly transparent) */}
       <div 
         className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none" 

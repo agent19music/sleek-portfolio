@@ -83,6 +83,7 @@ export function LornaGallery() {
   // Gallery view — back button is intentionally disabled on the root.
   return (
     <LornaShell
+      title="Component gallery"
       subtitle="lorna · v0.1"
       backDisabled
       theme={theme}

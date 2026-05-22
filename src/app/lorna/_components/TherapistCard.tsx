@@ -26,13 +26,13 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
   return (
     <article
       className="
-        bg-[var(--color-charcoal-grey)]/40
+        bg-[var(--color-pitch-black)]
         rounded-[12px]
         px-4 py-3
         flex flex-col @sm:flex-row @sm:items-center gap-3
         border border-[var(--color-charcoal-grey)]
         [box-shadow:var(--shadow-card)]
-        hover:bg-[var(--color-charcoal-grey)]/60
+        hover:bg-[var(--color-graphite)]
         hover:-translate-y-0.5
         hover:[box-shadow:var(--shadow-card-hover)]
         transition-all duration-200 ease-out
@@ -122,7 +122,7 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
             className="
               inline-flex items-center gap-1
               bg-[var(--color-gunmetal)]
-              text-[var(--color-storm-cloud)]
+              text-[var(--color-light-steel)]
               rounded-[6px]
               px-1.5 py-px
               text-[11px]
@@ -172,7 +172,7 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
             className="
               inline-flex items-center gap-1
               bg-[var(--color-gunmetal)]
-              text-[var(--color-storm-cloud)]
+              text-[var(--color-light-steel)]
               rounded-[6px]
               px-2 py-0.5
               text-[11px]
