@@ -83,8 +83,6 @@ export function LornaGallery() {
   // Gallery view — back button is intentionally disabled on the root.
   return (
     <LornaShell
-      title="Component gallery"
-      subtitle="lorna · v0.1"
       backDisabled
       theme={theme}
       onThemeChange={handleThemeChange}
@@ -93,7 +91,7 @@ export function LornaGallery() {
         <div className="mb-8">
         
           <h1
-            className="mt-2 text-[40px] sm:text-[56px] leading-[1.05] text-[var(--color-porcelain)]"
+            className="mt-2 text-[32px] sm:text-[56px] leading-[1.05] text-[var(--color-porcelain)]"
             style={{ fontWeight: 590, letterSpacing: '-0.03em' }}
           >
             Some Sexy UI For Lorna

@@ -9,7 +9,7 @@ export type Theme = 'dark' | 'light'
 
 interface LornaShellProps {
   /** Title shown in the top bar (e.g. "Booked Therapists" or "Component gallery"). */
-  title: string
+  title?: string
   /** Optional sub-label rendered in monospace next to the title. */
   subtitle?: string
   /** Current preview mode. When undefined, the mode toggle is hidden. */
@@ -54,7 +54,6 @@ export function LornaShell({
         className="
           sticky top-0 z-20
           flex items-center justify-between
-          border-b border-[var(--color-charcoal-grey)]
           bg-[var(--color-pitch-black)]/85
           backdrop-blur
           px-4 sm:px-6 py-2.5
@@ -83,24 +82,24 @@ export function LornaShell({
             <ChevronLeft className="w-3.5 h-3.5" aria-hidden />
           </button>
 
-          <div className="hidden sm:block h-4 w-px bg-[var(--color-muted-ash)]" />
-
-          <div className="flex items-baseline gap-2 min-w-0">
-            <h2
-              className="text-[14px] text-[var(--color-porcelain)] truncate"
-              style={{ fontWeight: 510, letterSpacing: '-0.13px' }}
-            >
-              {title}
-            </h2>
-            {subtitle ? (
-              <span
-                className="lorna-mono hidden sm:inline text-[12px] text-[var(--color-storm-cloud)]"
-                style={{ letterSpacing: '-0.15px' }}
+          {title && (
+            <div className="flex items-baseline gap-2 min-w-0">
+              <h2
+                className="text-[14px] text-[var(--color-porcelain)] truncate"
+                style={{ fontWeight: 510, letterSpacing: '-0.13px' }}
               >
-                {subtitle}
-              </span>
-            ) : null}
-          </div>
+                {title}
+              </h2>
+              {subtitle ? (
+                <span
+                  className="lorna-mono hidden sm:inline text-[12px] text-[var(--color-storm-cloud)]"
+                  style={{ letterSpacing: '-0.15px' }}
+                >
+                  {subtitle}
+                </span>
+              ) : null}
+            </div>
+          )}
         </div>
 
         {}
