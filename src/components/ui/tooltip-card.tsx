@@ -8,11 +8,13 @@ export const Tooltip = ({
   children,
   containerClassName,
   offset = 12,
+  touchEnabled = true,
 }: {
   content: string | React.ReactNode;
   children: React.ReactNode;
   containerClassName?: string;
   offset?: number;
+  touchEnabled?: boolean;
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -174,6 +176,7 @@ export const Tooltip = ({
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchEnabled) return;
     const touch = e.touches[0];
     const rect = e.currentTarget.getBoundingClientRect();
     const mouseX = touch.clientX - rect.left;
@@ -183,6 +186,7 @@ export const Tooltip = ({
   };
 
   const handleTouchEnd = () => {
+    if (!touchEnabled) return;
     // Delay hiding to allow for tap interaction
     setTimeout(() => {
       setIsVisible(false);
@@ -192,6 +196,7 @@ export const Tooltip = ({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!touchEnabled) return;
     // Toggle visibility on click for mobile devices
     if (window.matchMedia("(hover: none)").matches) {
       e.preventDefault();

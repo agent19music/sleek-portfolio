@@ -109,6 +109,7 @@ export default function StackedPhotoCollection({
                     content={photo.caption ?? photo.alt}
                     containerClassName="absolute inset-0 h-full w-full block"
                     offset={32}
+                    touchEnabled={false}
                   >
                     <Image
                       src={photo.src}
