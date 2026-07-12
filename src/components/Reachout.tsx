@@ -52,7 +52,7 @@ export default function Reachout({
               />
             }>
               <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
+                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,7 +81,7 @@ export default function Reachout({
               />
             }>
               <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
+                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
                 href={socialLinks.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -110,7 +110,7 @@ export default function Reachout({
               />
             }>
               <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
+                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -130,7 +130,7 @@ export default function Reachout({
           {socialLinks.mail && (
             <Tooltip content="Contact me">
               <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
+                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
                 href={socialLinks.mail}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -159,7 +159,7 @@ export default function Reachout({
               />
             }>
               <a
-                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
+                className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full touch-manipulation active:opacity-75"
                 href={socialLinks.resume}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -183,6 +183,15 @@ export default function Reachout({
             <div className="text-sm dark:text-white/50 text-black/50 text-center sm:text-left">
               <p>Design & Developed by <span className="font-medium text-black/70 dark:text-white/70">Sean</span></p>
               <p>© 2026. All rights reserved.</p>
+              <p className="flex items-center justify-center sm:justify-start gap-1.5 mt-1">
+                I use Arch btw
+                <Image
+                  src="https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/icons8-arch-linux-24-blue.png"
+                  alt="Arch Linux logo"
+                  width={16}
+                  height={16}
+                />
+              </p>
             </div>
             <VisitorCount />
           </div>

@@ -110,7 +110,7 @@ export function LornaGallery() {
           {ENTRIES.map((entry) => {
             const isActive = !!entry.render
             const baseClasses =
-              'group relative text-left aspect-[4/5] rounded-[12px] border p-4 flex flex-col justify-between transition-all duration-150'
+              'group relative text-left aspect-[4/5] rounded-[12px] border p-4 flex flex-col justify-between transition-[background-color,border-color,box-shadow] duration-150'
 
             if (!isActive) {
               return (

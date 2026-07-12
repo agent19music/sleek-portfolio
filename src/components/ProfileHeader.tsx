@@ -65,7 +65,7 @@ export default function ProfileHeader({
           {socialLinks.github && (
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
                   <a
                     className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
                     href={socialLinks.github}
@@ -90,7 +90,7 @@ export default function ProfileHeader({
           {socialLinks.twitter && (
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
                   <a
                     className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
                     href={socialLinks.twitter}
@@ -115,7 +115,7 @@ export default function ProfileHeader({
           {socialLinks.resume && (
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
                   <a
                     className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
                     href={socialLinks.resume}
@@ -140,7 +140,7 @@ export default function ProfileHeader({
           {socialLinks.linkedin && (
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
                   <a
                     className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
                     href={socialLinks.linkedin}
@@ -165,7 +165,7 @@ export default function ProfileHeader({
           {mounted && (
             <Tooltip>
               <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 has-hover:hover:bg-black/10 dark:has-hover:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
                   <button
                     onClick={() => {
                       const newTheme = theme === 'light' ? 'dark' : 'light'

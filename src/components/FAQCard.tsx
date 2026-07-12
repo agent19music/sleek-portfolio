@@ -81,8 +81,8 @@ export const FAQCard: FC<FAQCardProps> = ({ faq }) => {
                 className="group/item cursor-pointer touch-manipulation"
                 onClick={() => setIsOpen(true)}
             >
-                <div className="flex items-center justify-between gap-4 py-6 sm:py-8 border-b border-neutral-200 dark:border-neutral-800 transition-opacity duration-300 group-has-hover:opacity-40 group-has-hover:group-hover/item:opacity-100">
-                    <h2 className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-black/80 group-has-hover:hover:text-black dark:text-white/80 dark:group-has-hover:hover:text-white font-medium transition-colors duration-300 flex-1">
+                <div className="flex items-center justify-between gap-4 py-6 sm:py-8 border-b border-neutral-200 dark:border-neutral-800 transition-opacity duration-300 group-has-[:hover]:opacity-40 group-has-[:hover]:group-hover/item:opacity-100">
+                    <h2 className="text-sm sm:text-[15px] leading-6 sm:leading-7 text-black/80 group-has-[:hover]:hover:text-black dark:text-white/80 dark:group-has-[:hover]:hover:text-white font-medium transition-colors duration-300 flex-1">
                         {faq.question}
                     </h2>
                     <ChevronDown className="w-4 h-4 text-neutral-400 transition-transform duration-300 group-hover/item:translate-y-0.5 shrink-0" />

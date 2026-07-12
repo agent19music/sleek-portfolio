@@ -23,7 +23,7 @@ export default function CallToAction({
       <p className="text-neutral-600 dark:text-neutral-400 font-(family-name:--font-instrument-serif) italic text-base sm:text-xl mb-3 sm:mb-3 text-center">{preText}</p>
       <div className="gradient bg-linear-to-b from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-lg p-px relative overflow-hidden w-auto mt-3 sm:mt-0">
         <CalButton
-          className="gradient h-full bg-zinc-100 dark:bg-zinc-900 rounded-lg text-zinc-900 dark:text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-all group relative overflow-hidden touch-manipulation active:opacity-75 cursor-pointer"
+          className="gradient h-full bg-zinc-100 dark:bg-zinc-900 rounded-lg text-zinc-900 dark:text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-opacity duration-150 ease-out group relative overflow-hidden touch-manipulation active:opacity-75 cursor-pointer"
           style={{
             '--x': '-90.45457%',
             '--spread': '90deg',
@@ -57,7 +57,7 @@ export default function CallToAction({
             }}
           />
 
-          <div className="flex items-center gap-2 group-hover:gap-6 sm:group-hover:gap-12 transition-all duration-300 relative z-20">
+          <div className="flex items-center gap-2 group-hover:gap-6 sm:group-hover:gap-12 transition-[gap] duration-300 relative z-20">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden shrink-0">
               <Image
                 alt={profileAlt}
@@ -68,7 +68,7 @@ export default function CallToAction({
                 style={{ color: 'transparent' }}
               />
             </div>
-            <div className="flex items-center gap-0 absolute left-[28px] sm:left-[30px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="flex items-center gap-0 absolute left-[28px] sm:left-[30px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-[transform,opacity] duration-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

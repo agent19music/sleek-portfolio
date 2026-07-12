@@ -24,7 +24,7 @@ export default function SponsorButton({
       <TooltipTrigger asChild>
         <Button
           asChild
-          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg bg-zinc-800 text-white text-sm font-medium transition-all hover:bg-zinc-800/90 hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
+          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg bg-zinc-800 text-white text-sm font-medium transition-[background-color,transform] duration-150 ease-out hover:bg-zinc-800/90 pointer-fine:hover:scale-[1.02] active:scale-[0.98] touch-manipulation"
           style={{ 
             WebkitTapHighlightColor: 'transparent',
             WebkitTouchCallout: 'none',

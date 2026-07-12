@@ -7,10 +7,12 @@ export const Tooltip = ({
   content,
   children,
   containerClassName,
+  offset = 12,
 }: {
   content: string | React.ReactNode;
   children: React.ReactNode;
   containerClassName?: string;
+  offset?: number;
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [mouse, setMouse] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -23,14 +25,26 @@ export const Tooltip = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const [bgColor, setBgColor] = useState<string>('rgb(255, 255, 255)');
+  const [bgColor, setBgColor] = useState<string>('rgb(23, 23, 23)');
+  const [textColor, setTextColor] = useState<string>('rgb(229, 229, 229)');
+  const [glowShadow, setGlowShadow] = useState<string>(
+    '0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.6), inset -8px 8px 10px -8px rgba(255, 255, 255, 0.7)',
+  );
 
   useEffect(() => {
     const updateBgColor = () => {
+      // Inverted, like the social-link tooltips: dark bubble on a light theme,
+      // light bubble on a dark theme, so it always pops against the page.
       const isDark = document.documentElement.classList.contains('dark');
-      setBgColor(isDark ? 'rgb(23, 23, 23)' : 'rgb(255, 255, 255)');
+      setBgColor(isDark ? 'rgb(250, 250, 250)' : 'rgb(23, 23, 23)');
+      setTextColor(isDark ? 'rgb(38, 38, 38)' : 'rgb(229, 229, 229)');
+      setGlowShadow(
+        isDark
+          ? '0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(0, 0, 0, 0.08), inset -8px 8px 10px -8px rgba(0, 0, 0, 0.12)'
+          : '0 4px 16px rgba(0, 0, 0, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.6), inset -8px 8px 10px -8px rgba(255, 255, 255, 0.7)',
+      );
     };
-    
+
     updateBgColor();
     const observer = new MutationObserver(updateBgColor);
     observer.observe(document.documentElement, {
@@ -90,13 +104,13 @@ export const Tooltip = ({
   }, [isVisible, content]);
 
   const calculatePosition = useCallback((mouseX: number, mouseY: number) => {
-    if (!containerRef.current) return { x: mouseX + 12, y: mouseY + 12 };
+    if (!containerRef.current) return { x: mouseX + offset, y: mouseY + offset };
 
     const container = containerRef.current;
     const containerRect = container.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-    const padding = 12;
+    const padding = offset;
 
     const tooltipWidth = width || 240;
     const tooltipHeight = height || 0;
@@ -129,7 +143,7 @@ export const Tooltip = ({
     }
 
     return { x: finalX, y: finalY };
-  }, [width, height]);
+  }, [width, height, offset]);
 
   const updateMousePosition = (mouseX: number, mouseY: number) => {
     setMouse({ x: mouseX, y: mouseY });
@@ -227,16 +241,18 @@ export const Tooltip = ({
               stiffness: 300,
               damping: 25,
             }}
-            className="pointer-events-none absolute z-[9999] max-w-[90vw] rounded-md shadow-sm shadow-black/5 dark:shadow-white/10"
+            className="pointer-events-none absolute z-[9999] max-w-[90vw] rounded-md"
             style={{
               top: position.y,
               left: position.x,
               backgroundColor: bgColor,
+              boxShadow: glowShadow,
             }}
           >
             <div
               ref={contentRef}
-              className="text-sm text-neutral-600 p-4 dark:text-neutral-400 leading-relaxed [&_img]:max-w-[300px] [&_img]:h-auto [&_img]:bg-transparent [&_img]:block [&_img]:relative [&_img]:z-10 [&_img]:mb-0 [&_span]:!opacity-100 [&_span>img]:!opacity-100 [&>p]:mb-2 [&>p]:last:mb-0 [&>p]:leading-relaxed [&>*+*]:mt-2"
+              className="text-sm p-4 leading-relaxed [&_img]:max-w-[300px] [&_img]:h-auto [&_img]:bg-transparent [&_img]:block [&_img]:relative [&_img]:z-10 [&_img]:mb-0 [&_span]:!opacity-100 [&_span>img]:!opacity-100 [&>p]:mb-2 [&>p]:last:mb-0 [&>p]:leading-relaxed [&>*+*]:mt-2"
+              style={{ color: textColor }}
             >
               {content}
             </div>

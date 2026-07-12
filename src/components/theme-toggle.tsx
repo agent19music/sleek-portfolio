@@ -50,9 +50,9 @@ export function ModeToggle() {
         {theme === "light" ? (
           <motion.div
             key="sun"
-            initial={{ scale: 0, rotate: -180 }}
+            initial={{ scale: 0.4, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: 180 }}
+            exit={{ scale: 0.4, rotate: 180 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             className="absolute inset-0 flex items-center justify-center"
           >
@@ -61,9 +61,9 @@ export function ModeToggle() {
         ) : (
           <motion.div
             key="moon"
-            initial={{ scale: 0, rotate: 180 }}
+            initial={{ scale: 0.4, rotate: 180 }}
             animate={{ scale: 1, rotate: 0 }}
-            exit={{ scale: 0, rotate: -180 }}
+            exit={{ scale: 0.4, rotate: -180 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
             className="absolute inset-0 flex items-center justify-center"
           >

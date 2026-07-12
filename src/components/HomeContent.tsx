@@ -135,7 +135,7 @@ export default function NewHeroSection() {
                         I like building fast
                       </h2>
                       <p className="mt-1 text-xs sm:text-sm text-black/60 dark:text-white/60">
-                        Hackathons I have joined
+                        Hackathons I have won
                       </p>
                     </div>
 
@@ -143,7 +143,7 @@ export default function NewHeroSection() {
                       {DATA.hackathons.map((hackathon) => (
                         <article
                           key={`${hackathon.title}-${hackathon.dates}`}
-                          className="rounded-xl border border-neutral-200/70 p-4 transition-all duration-300 dark:border-neutral-800 sm:p-5"
+                          className="rounded-xl border border-neutral-200/70 p-4 dark:border-neutral-800 sm:p-5"
                         >
                           <div className="flex items-start gap-3 sm:gap-4">
                             <div className="mt-1 h-10 w-10 shrink-0 overflow-hidden rounded-xl bg-transparent ring-1 ring-neutral-200/60 dark:ring-neutral-800/60 sm:h-12 sm:w-12">

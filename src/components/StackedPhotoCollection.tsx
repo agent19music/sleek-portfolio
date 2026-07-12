@@ -1,8 +1,9 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
+import { Tooltip } from "@/components/ui/tooltip-card"
 
 interface Photo {
   id: number
@@ -25,6 +26,7 @@ export default function StackedPhotoCollection({
   const [photoStack, setPhotoStack] = useState<Photo[]>(photos)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   const getRandomOffset = () => {
     const randomSign = Math.random() > 0.5 ? 1 : -1
@@ -79,17 +81,22 @@ export default function StackedPhotoCollection({
             return (
               <motion.div
                 key={photo.id}
-                className="absolute left-0 top-0 h-full w-full cursor-pointer"
-                initial={{ scale: 0.8, opacity: 0 }}
+                className="absolute left-0 top-0 h-full w-full cursor-pointer active:scale-[0.97] transition-transform duration-150 ease-out"
+                initial={{ scale: 0.92, opacity: 0 }}
                 animate={{
                   opacity: 1,
-                  x: offset.x * stackSpacing,
-                  y: offset.y * stackSpacing,
-                  rotate: offset.rotate,
+                  x: reduceMotion ? 0 : offset.x * stackSpacing,
+                  y: reduceMotion ? 0 : offset.y * stackSpacing,
+                  rotate: reduceMotion ? 0 : offset.rotate,
+                  scale: 1,
                   zIndex,
                 }}
-                exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.2 } }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                exit={{ scale: 0.92, opacity: 0, transition: { duration: 0.2, ease: [0.23, 1, 0.32, 1] } }}
+                transition={
+                  reduceMotion
+                    ? { duration: 0.15, ease: "easeOut" }
+                    : { type: "spring", duration: 0.5, bounce: 0.2 }
+                }
                 style={{ transformOrigin: "center center" }}
                 onClick={shuffleNext}
                 tabIndex={0}
@@ -97,16 +104,34 @@ export default function StackedPhotoCollection({
                   if (e.key === "Enter" || e.key === " ") shuffleNext()
                 }}
               >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="h-full w-full rounded-sm object-cover"
-                  draggable={false}
-                  quality={100}
-                  priority={index === 0}
-                />
+                {index === 0 ? (
+                  <Tooltip
+                    content={photo.caption ?? photo.alt}
+                    containerClassName="absolute inset-0 h-full w-full block"
+                    offset={32}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="h-full w-full rounded-sm object-cover"
+                      draggable={false}
+                      quality={100}
+                      priority
+                    />
+                  </Tooltip>
+                ) : (
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="h-full w-full rounded-sm object-cover"
+                    draggable={false}
+                    quality={100}
+                  />
+                )}
                 {!hasInteracted && <div className="pointer-events-none absolute inset-0" />}
               </motion.div>
             )

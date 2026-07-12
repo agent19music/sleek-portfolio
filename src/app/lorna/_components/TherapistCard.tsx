@@ -35,7 +35,7 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
         hover:bg-[var(--color-graphite)]
         hover:-translate-y-0.5
         hover:[box-shadow:var(--shadow-card-hover)]
-        transition-all duration-200 ease-out
+        transition-[background-color,transform,box-shadow] duration-200 ease-out
         relative
       "
     >
