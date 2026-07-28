@@ -7,10 +7,11 @@ export const DATA = {
   description:
     "Software Engineer. I love building beautiful and efficient things that serve humanity.",
   summary:
-    "Cracked full-stack software engineer. High taste in UI/UX. Currently building Uzski Corp, a software development, design and brand consulting company. Welcome to my slice of the internet. I appreciate the visit.",
+    "Cracked, creative full-stack software engineer. High taste in UI/UX. Currently building Uzski Corp, a software development, design and brand consulting company. Welcome to my slice of the internet. I appreciate the visit.",
   skills: [
     "Python",
     "Typescript",
+    "Elixir",
     "Kotlin",
     "PHP",
     "Figma",
@@ -55,6 +56,18 @@ export const DATA = {
     },
   },
   work: [
+    {
+      company: "GS1 Kenya",
+      href: "https://gs1kenya.org",
+      badges: [] as string[],
+      location: "Nairobi, KE",
+      title: "Full Stack Software Engineer",
+      logoUrl: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/gs1kenyalogo.jpg",
+      start: "Jul 2026",
+      end: "present",
+      description:
+        "Working as a Full Stack Software Engineer at GS1 Kenya, contributing across various systems. Currently building a healthcare sector platform using Elixir.",
+    },
     {
       company: "Uzski Corp",
       href: "https://uzskicorp.agency",
@@ -229,23 +242,13 @@ export const DATA = {
   ],
   hackathons: [
     {
-      title: "Naiccon Afrofuturisic Game Hackathon",
-      dates: "November 18h - 19th, 2023",
+      title: "Team1 Kenya Avalanche Mini Hack",
+      dates: "2026",
       location: "Nairobi, Kenya",
       description:
-        "Developed a web based anime quiz bowl game application with a bingwa points award system and weekly leaderboards.",
+        "Won Bounty 6 building Athena, an AI second brain that answers company questions from internal docs with an Avalanche blockchain audit trail.",
       image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/naicconlogo.jpg",
-      links: [] as string[],
-    },
-    {
-      title: "A2SV AI for Impact in Africa",
-      dates: "July 26th - 31st, 2024",
-      location: "Nairobi, Kenya",
-      description:
-        "Developed a mental wellness web application that  streamlines learning by easing access to material, providing a place to bond over common interests like music and film.",
-      image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/a2svlogo.jpeg",
+        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/team1logo.png",
       links: [] as string[],
     },
     {
@@ -253,7 +256,7 @@ export const DATA = {
       dates: "November 15th - 17th 2024",
       location: "Nairobi, Kenya",
       description:
-        "Developed a secure ticket management system that eliminates unauthorized transfers and prevents revenue loss from resale fraud, while delivering an intuitive, visually striking user interface for enhanced customer experience.",
+        "Developed a secure ticket management system that eliminates unauthorized transfers and prevents revenue loss from resale fraud, with an intuitive interface.",
       image:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/logo_anzavillage.png",
       links: [] as string[],
@@ -263,7 +266,7 @@ export const DATA = {
       dates: "May 23rd - 24th 2025",
       location: "Nyeri, Kenya",
       description:
-        "Presented the winning healthcare accessibility application that connects vulnerable patients like the elderly and disabled with healthcare providers, ensuring they receive timely medical attention.",
+        "Presented the winning healthcare accessibility app connecting vulnerable patients like the elderly and disabled with providers for timely medical attention.",
       image:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/i2B-LOGO.png",
       links: [] as string[],
@@ -273,19 +276,9 @@ export const DATA = {
       dates: "July 1st - 4th, 2025",
       location: "Nairobi, Kenya",
       description:
-        "Developed an AI powered HR management system that streamlines and automates hiring talent, employee management, and payroll processing",
+        "Developed an AI powered HR management system that streamlines and automates hiring, employee management, and payroll processing for teams.",
       image:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/FB_IMG_1753166941314.jpg",
-      links: [] as string[],
-    },
-    {
-      title: "Google Chrome Built-In AI Hackathon",
-      dates: "September 9th - October 31st, 2025",
-      location: "Nairobi, Kenya",
-      description:
-        "Developed a smart shopping assistant Chrome extension that leverages AI to help users find the best deals, compare prices, and make informed purchasing decisions while browsing online stores.",
-      image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/googlechromeAIhackathon.png",
       links: [] as string[],
     },
   ],
@@ -298,9 +291,9 @@ export const DATA = {
     },
     {
       id: 2,
-      src: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/canva/seanmotanyaathismoringaschoolgraduation.png",
-      alt: "Moringa School Graduation",
-      caption: "Me at the Moringa School Graduation, 2024",
+      src: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/unigradpolaroidnobg.png",
+      alt: "University Graduation",
+      caption: "Me at my university graduation",
     },
     {
       id: 3,

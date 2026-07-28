@@ -28,7 +28,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
       }}
       aria-label={`Open project page for ${project.title}`}
     >
-      <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white transition-all duration-300 ease-out dark:border-white/10 dark:bg-white/5 group-has-hover:opacity-40 group-has-hover:group-hover/item:scale-[1.01] group-has-hover:group-hover/item:opacity-100">
+      <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-black/10 bg-white transition-[opacity,transform] duration-300 ease-out dark:border-white/10 dark:bg-white/5 group-has-[:hover]:opacity-40 group-has-[:hover]:group-hover/item:scale-[1.01] group-has-[:hover]:group-hover/item:opacity-100">
         {project.video ? (
           <video
             src={project.video}

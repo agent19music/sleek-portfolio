@@ -8,7 +8,7 @@ import Image from "next/image";
 const techStack = [
   // Languages
   { name: "TypeScript", category: "language", icon: "/tech-icons/typescript.svg", color: "bg-gray-500" },
-  { name: "Java", category: "language", icon: "/tech-icons/java.svg", color: "bg-gray-500" },
+  { name: "Elixir", category: "language", icon: "/tech-icons/elixir.svg", color: "bg-gray-500" },
   { name: "Python", category: "language", icon: "/tech-icons/python.svg", color: "bg-gray-500" },
   { name: "SQL", category: "language", icon: "/tech-icons/sql.svg", color: "bg-gray-500" },
   
@@ -37,7 +37,7 @@ interface TechIconProps {
 
 function TechIcon({ tech, className = "" }: TechIconProps) {
   return (
-    <div className={`flex flex-col items-center justify-center p-2 sm:p-3 transition-all duration-300 hover:scale-105 min-w-[80px] sm:min-w-[90px] group ${className}`}>
+    <div className={`flex flex-col items-center justify-center p-2 sm:p-3 min-w-[80px] sm:min-w-[90px] group transition-transform duration-200 ease-out pointer-fine:hover:scale-105 ${className}`}>
       {/* Icon Container */}
       <div className="relative w-8 h-8 sm:w-10 sm:h-10 mb-1.5 sm:mb-2 flex items-center justify-center">
         {/* Try to load actual SVG, fallback to grey placeholder */}

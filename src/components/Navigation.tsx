@@ -23,7 +23,7 @@ export default function PageNavigation() {
       <div className="flex items-center gap-0.5 p-0.5 bg-black/5 dark:bg-white/10 rounded-full h-[32px]">
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="w-7 h-7 bg-transparent has-hover:hover:bg-black/5 dark:has-hover:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
+            <div className="w-7 h-7 bg-transparent pointer-fine:hover:bg-black/5 dark:pointer-fine:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
               <Link href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="18px" height="18px" viewBox="0 0 18 18" className="size-[13px] -mt-px -ml-0.5">
                   <path d="M13.75 6.019C13.336 6.019 13 5.683 13 5.269V2.75C13 2.336 13.336 2 13.75 2C14.164 2 14.5 2.336 14.5 2.75V5.269C14.5 5.683 14.164 6.019 13.75 6.019Z" fill="currentColor" data-color="color-2"></path>
@@ -39,7 +39,7 @@ export default function PageNavigation() {
         {showBackArrow && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="w-7 h-7 bg-transparent has-hover:hover:bg-black/5 dark:has-hover:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
+              <div className="w-7 h-7 bg-transparent pointer-fine:hover:bg-black/5 dark:pointer-fine:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
                 <Link href="/projects">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="size-[14px] -mt-px -ml-0.5">
                     <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
@@ -58,7 +58,7 @@ export default function PageNavigation() {
         {mounted && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="w-7 h-7 bg-transparent has-hover:hover:bg-black/5 dark:has-hover:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
+              <div className="w-7 h-7 bg-transparent pointer-fine:hover:bg-black/5 dark:pointer-fine:hover:bg-white/10 transition-[colors] duration-200 rounded-full flex items-center justify-center text-black/75 dark:text-white/80" tabIndex={0} style={{ transform: 'none' }}>
                 <button
                   onClick={() => {
                     const newTheme = theme === 'light' ? 'dark' : 'light'

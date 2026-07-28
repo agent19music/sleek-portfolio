@@ -50,14 +50,14 @@ export const ScrollToTop = () => {
     <motion.button
       className={`fixed bottom-8 right-8 z-200 p-3 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-lg hover:shadow-xl transition-shadow`}
       onClick={scrollToTop}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ 
-        opacity: isVisible ? 1 : 0, 
-        scale: isVisible ? 1 : 0 
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{
+        opacity: isVisible ? 1 : 0,
+        scale: isVisible ? 1 : 0.9
       }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <svg
         className="w-5 h-5"
