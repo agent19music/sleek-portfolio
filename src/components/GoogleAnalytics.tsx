@@ -16,7 +16,18 @@ export default function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_ID}');
+
+          // Map short ?src= links (e.g. ?src=resume) to GA campaign source
+          var src = new URLSearchParams(window.location.search).get('src');
+          gtag('config', '${GA_ID}', src ? {
+            campaign_source: src,
+            campaign_medium: 'link'
+          } : {});
+
+          // Also fire an explicit event so it shows up in Realtime/Events
+          if (src) {
+            gtag('event', 'tagged_visit', { link_url: src });
+          }
         `}
       </Script>
     </>
