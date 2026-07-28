@@ -65,9 +65,9 @@ export const metadata: Metadata = {
     siteName: "Sean Motanya Portfolio",
     images: [
       {
-        url: "/opengraph.webp",
-        width: 1000,
-        height: 1000,
+        url: "/sean-og.webp",
+        width: 1200,
+        height: 630,
         alt: "Sean Motanya - Full Stack Software Engineer",
       },
     ],
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     description:
       "Full Stack Software Engineer building intentionally designed, impactful applications. Specializing in React, Next.js, Python, and modern web technologies.",
     creator: "@uzski404",
-    images: ["/opengraph.webp"],
+    images: ["/sean-og.webp"],
   },
   robots: {
     index: true,
