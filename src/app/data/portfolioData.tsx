@@ -239,8 +239,17 @@ export const DATA = {
       image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing.png",
       video: "",
     },
+    
   ],
   hackathons: [
+    {
+      title: "SpaceXAI Kenya Build Night",
+      dates: "2026",
+      location: "Nairobi, Kenya",
+      description:
+        "Won 1st place building Sentinel, a voice-operated IT command centre for monitoring infrastructure, identifying issues, and running approved operational playbooks.",
+      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/SpaceXAI-Logo.webp",
+    },
     {
       title: "Team1 Kenya Avalanche Mini Hack",
       dates: "2026",

@@ -171,6 +171,22 @@ export default function NewHeroSection() {
                               <p className="mt-3 text-sm leading-relaxed text-black/70 dark:text-white/70">
                                 {hackathon.description}
                               </p>
+                              {hackathon.links && hackathon.links.length > 0 && (
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                  {hackathon.links.map((link) => (
+                                    <a
+                                      key={link}
+                                      href={link}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-1 rounded-full border border-neutral-200/80 bg-neutral-100/80 px-2.5 py-0.5 text-xs font-medium text-black/80 hover:bg-neutral-200 dark:border-neutral-700/80 dark:bg-neutral-800/80 dark:text-white/90 dark:hover:bg-neutral-700 transition-colors"
+                                    >
+                                      <span>Live Demo</span>
+                                      <span className="text-[10px]">↗</span>
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </article>
