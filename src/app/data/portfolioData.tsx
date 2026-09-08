@@ -249,6 +249,7 @@ export const DATA = {
       description:
         "Won 1st place building Sentinel, a voice-operated IT command centre for monitoring infrastructure, identifying issues, and running approved operational playbooks.",
       image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/SpaceXAI-Logo.webp",
+      links: [] as string[],
     },
     {
       title: "Team1 Kenya Avalanche Mini Hack",
