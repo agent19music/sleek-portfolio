@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 interface ScrollProgressProps {
   className?: string
@@ -23,7 +24,11 @@ export const ScrollProgress = ({ className = '' }: ScrollProgressProps) => {
   )
 }
 
-export const ScrollToTop = () => {
+interface ScrollToTopProps {
+  className?: string
+}
+
+export const ScrollToTop = ({ className }: ScrollToTopProps = {}) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -48,8 +53,12 @@ export const ScrollToTop = () => {
 
   return (
     <motion.button
-      className={`fixed bottom-8 right-8 z-200 p-3 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-lg hover:shadow-xl transition-shadow`}
+      className={cn(
+        "fixed bottom-24 right-8 z-200 p-3 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-lg hover:shadow-xl transition-shadow",
+        className
+      )}
       onClick={scrollToTop}
+      aria-label="Scroll to top"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{
         opacity: isVisible ? 1 : 0,

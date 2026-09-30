@@ -213,6 +213,7 @@ export default function RootLayout({
           data-enable-batching="true"
           async
         ></script>
+        <script src="https://www.makermap.lol/badge/uzski404.js" data-position="corner"async></script>
       </body>
     </html>
   );
