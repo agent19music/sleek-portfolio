@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Roboto } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 import GradualBlur from "@/components/GradualBlur"
 import { DynamicTitle } from "@/components/DynamicTitle"
 import GoogleAnalytics from "@/components/GoogleAnalytics"
+import { WebVitals } from "@/components/WebVitals"
 
 const hkGrotesk = Roboto({
   weight: ['400', '500', '700'],
@@ -19,7 +21,8 @@ const instrumentSerif = Instrument_Serif({
   weight: ['400'],
   style: 'normal',
   subsets: ['latin'],
-  variable: '--font-instrument-serif'
+  variable: '--font-instrument-serif',
+  display: 'swap',
 })
 
 export const viewport: Viewport = {
@@ -172,14 +175,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" />
-        <link rel="canonical" href="https://sean.uzskicorp.agency" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#09090b" />
         <DynamicTitle />
         <script
           type="application/ld+json"
@@ -188,6 +183,7 @@ export default function RootLayout({
       </head>
       <body className={`${hkGrotesk.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
         <GoogleAnalytics />
+        <WebVitals />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -207,13 +203,17 @@ export default function RootLayout({
           />
           <ScrollToTop />
         </ThemeProvider>
-        <script
+        <Script
           src="https://cdn.databuddy.cc/databuddy.js"
+          strategy="lazyOnload"
           data-client-id="2cYj0B5Uv0T4q70DhnoAc"
           data-enable-batching="true"
-          async
-        ></script>
-        <script src="https://www.makermap.lol/badge/uzski404.js" data-position="corner"async></script>
+        />
+        <Script
+          src="https://www.makermap.lol/badge/uzski404.js"
+          strategy="lazyOnload"
+          data-position="corner"
+        />
       </body>
     </html>
   );

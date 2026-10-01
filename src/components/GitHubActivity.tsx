@@ -264,7 +264,6 @@ export default function GitHubActivity({ username = 'agent19music' }: GitHubActi
                                         day: 'numeric',
                                         year: 'numeric'
                                     })}`}
-                                    aria-label={`${day.count} contributions on ${day.date}`}
                                 />
                             ))}
                         </div>

@@ -64,7 +64,7 @@ export default function ExperienceContent() {
               </div>
             </div>
 
-            <div className="text-left text-xs opacity-60 sm:text-sm lg:min-w-[180px] lg:text-right">
+            <div className="text-left text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm lg:min-w-[180px] lg:text-right">
               <p>{exp.start} - {exp.end}</p>
               <p className="mt-1">{exp.location}</p>
             </div>

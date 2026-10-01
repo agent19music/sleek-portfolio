@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest'
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN,
+  auth: process.env.GITHUB_TOKEN,
 })
 
 export interface GitHubPullRequest {
@@ -75,7 +75,7 @@ function formatDate(dateString: string): string {
 
 
 export async function fetchUserPullRequests(username: string, limit: number = 50): Promise<ProcessedContribution[]> {
-  const token = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN
+  const token = process.env.GITHUB_TOKEN
   
   if (!token) {
     return []
@@ -175,7 +175,7 @@ export async function fetchUserPullRequests(username: string, limit: number = 50
 }
 
 export async function fetchRepositoryStars(owner: string, repo: string): Promise<number> {
-  const token = process.env.GITHUB_TOKEN || process.env.NEXT_PUBLIC_GITHUB_TOKEN
+  const token = process.env.GITHUB_TOKEN
   
   if (!token) {
     return 0
@@ -192,34 +192,3 @@ export async function fetchRepositoryStars(owner: string, repo: string): Promise
     return 0
   }
 }
-
-// Fallback data in case API fails
-export const fallbackContributions: ProcessedContribution[] = [
-  {
-    title: "feat(mem0): add complete mcp server with mem0 API integration",
-    description: "Added mem0 MCP integration to the Klavis AI ecosystem, contributing to tools that other developers actually use.",
-    repository: "Klavis-AI",
-    link: "https://github.com/Klavis-AI/klavis/pull/251",
-    date: "2025",
-    type: "feature",
-    state: "merged"
-  },
-  {
-    title: "feat: add express.js support to CLI",
-    description: "Added express.js support to the billingsdk CLI, contributing to tools that other developers actually use.",
-    repository: "dodopayments",
-    link: "https://github.com/dodopayments/billingsdk/pull/103",
-    date: "2025",
-    type: "feature",
-    state: "merged"
-  },
-  {
-    title: "feat: interactive component playground",
-    description: "Added an interactive component playground to the Dodopayments billingsdk.",
-    repository: "dodopayments",
-    link: "https://github.com/dodopayments/billingsdk/pull/96",
-    date: "2025",
-    type: "feature",
-    state: "merged"
-  }
-]

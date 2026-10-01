@@ -56,6 +56,7 @@ export default function Reachout({
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                   WebkitTouchCallout: 'none',
@@ -63,7 +64,7 @@ export default function Reachout({
                   userSelect: 'none'
                 }}
               >
-                <FaGithub className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
+                <FaGithub aria-hidden="true" className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
                 <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">GitHub</span>
               </a>
             </Tooltip>
@@ -85,6 +86,7 @@ export default function Reachout({
                 href={socialLinks.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Twitter"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                   WebkitTouchCallout: 'none',
@@ -92,7 +94,7 @@ export default function Reachout({
                   userSelect: 'none'
                 }}
               >
-                <FaXTwitter className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
+                <FaXTwitter aria-hidden="true" className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
                 <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Twitter</span>
               </a>
             </Tooltip>
@@ -114,6 +116,7 @@ export default function Reachout({
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                   WebkitTouchCallout: 'none',
@@ -121,7 +124,7 @@ export default function Reachout({
                   userSelect: 'none'
                 }}
               >
-                <FaLinkedin className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
+                <FaLinkedin aria-hidden="true" className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
                 <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">LinkedIn</span>
               </a>
             </Tooltip>
@@ -134,6 +137,7 @@ export default function Reachout({
                 href={socialLinks.mail}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Email"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                   WebkitTouchCallout: 'none',
@@ -141,7 +145,7 @@ export default function Reachout({
                   userSelect: 'none'
                 }}
               >
-                <IoMdMail className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
+                <IoMdMail aria-hidden="true" className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
                 <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Mail</span>
               </a>
             </Tooltip>
@@ -163,6 +167,7 @@ export default function Reachout({
                 href={socialLinks.resume}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Resume"
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                   WebkitTouchCallout: 'none',
@@ -170,7 +175,7 @@ export default function Reachout({
                   userSelect: 'none'
                 }}
               >
-                <FaPaperclip className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
+                <FaPaperclip aria-hidden="true" className="text-[28px] sm:text-[18px] text-black/75 dark:text-white/80 shrink-0" />
                 <span className="hidden sm:inline text-sm font-medium text-black/75 dark:text-white/80">Resume</span>
               </a>
             </Tooltip>

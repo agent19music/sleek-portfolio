@@ -1,0 +1,8 @@
+# Sean Motanya
+
+Full-stack software engineer in Nairobi. This site is a portfolio of product work, writing, and ways to get in touch.
+
+- [Home](https://sean.uzskicorp.agency/): profile, experience, selected projects, and writing
+- [Projects](https://sean.uzskicorp.agency/projects): case studies and shipped work
+- [Writing](https://sean.uzskicorp.agency/blogs): notes on design and engineering
+- [Book a call](https://cal.com/uzskicorp/discovery-call?duration=15): 15-minute discovery call

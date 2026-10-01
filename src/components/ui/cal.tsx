@@ -6,27 +6,19 @@ import { cn } from '@/lib/utils'
 
 const CAL_NAMESPACE = '15min'
 const CAL_LINK = 'uzskicorp/discovery-call'
+const CAL_URL = 'https://cal.com/uzskicorp/discovery-call?duration=15'
 const CAL_CONFIG = {
   layout: 'month_view',
-  useSlotsViewOnSmallScreen: true,
-}
+  useSlotsViewOnSmallScreen: 'true',
+} as const
 
-export const BUDGET_OPTIONS = [
-  { label: '$0 - $2k', value: '0-2k' },
-  { label: '$2k - $5k', value: '2k-5k' },
-  { label: '$5k - $10k', value: '5k-10k' },
-  { label: '$10k+', value: '10k+' },
-] as const
+type CalApi = Awaited<ReturnType<typeof getCalApi>>
 
-let calInitialized = false
+let calPromise: Promise<CalApi> | null = null
 
-function useCalEmbed() {
-  React.useEffect(() => {
-    if (calInitialized) return
-    calInitialized = true
-
-    void (async () => {
-      const cal = await getCalApi({ namespace: CAL_NAMESPACE })
+function loadCal() {
+  if (!calPromise) {
+    calPromise = getCalApi({ namespace: CAL_NAMESPACE }).then((cal) => {
       cal('ui', {
         cssVarsPerTheme: {
           light: { 'cal-brand': '#C20019' },
@@ -35,17 +27,30 @@ function useCalEmbed() {
         hideEventTypeDetails: false,
         layout: 'month_view',
       })
-    })()
-  }, [])
+      return cal
+    })
+  }
+
+  return calPromise
+}
+
+async function openScheduler() {
+  try {
+    const cal = await loadCal()
+    cal('modal', {
+      calLink: CAL_LINK,
+      config: CAL_CONFIG,
+    })
+  } catch {
+    window.open(CAL_URL, '_blank', 'noopener,noreferrer')
+  }
 }
 
 type CalButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode
 }
 
-export function CalButton({ children, className, ...props }: CalButtonProps) {
-  useCalEmbed()
-
+export function CalButton({ children, className, onClick, onPointerEnter, ...props }: CalButtonProps) {
   return (
     <button
       type="button"
@@ -54,9 +59,15 @@ export function CalButton({ children, className, ...props }: CalButtonProps) {
         'appearance-none border-0 bg-transparent p-0 m-0 font-inherit text-inherit leading-inherit text-left outline-none',
         className
       )}
-      data-cal-namespace={CAL_NAMESPACE}
-      data-cal-link={CAL_LINK}
-      data-cal-config={JSON.stringify(CAL_CONFIG)}
+      onPointerEnter={(event) => {
+        onPointerEnter?.(event)
+        void loadCal()
+      }}
+      onClick={(event) => {
+        onClick?.(event)
+        if (event.defaultPrevented) return
+        void openScheduler()
+      }}
     >
       {children}
     </button>
@@ -67,9 +78,7 @@ type CalTextLinkProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode
 }
 
-export function CalTextLink({ children, className, ...props }: CalTextLinkProps) {
-  useCalEmbed()
-
+export function CalTextLink({ children, className, onClick, onPointerEnter, ...props }: CalTextLinkProps) {
   return (
     <button
       type="button"
@@ -78,9 +87,15 @@ export function CalTextLink({ children, className, ...props }: CalTextLinkProps)
         'text-[#C20019] dark:text-[#FF4D6A] hover:underline underline-offset-4',
         className
       )}
-      data-cal-namespace={CAL_NAMESPACE}
-      data-cal-link={CAL_LINK}
-      data-cal-config={JSON.stringify(CAL_CONFIG)}
+      onPointerEnter={(event) => {
+        onPointerEnter?.(event)
+        void loadCal()
+      }}
+      onClick={(event) => {
+        onClick?.(event)
+        if (event.defaultPrevented) return
+        void openScheduler()
+      }}
     >
       {children}
     </button>

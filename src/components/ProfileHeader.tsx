@@ -57,7 +57,7 @@ export default function ProfileHeader({
           <h1 className="font-[family-name:var(--font-instrument-serif)] italic text-2xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
             {name}
           </h1>
-          <p className="opacity-40 text-xs sm:text-sm">
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">
             {title}
           </p>
         </div>
@@ -71,6 +71,7 @@ export default function ProfileHeader({
                     href={socialLinks.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="GitHub"
                     style={{
                       WebkitTapHighlightColor: 'transparent',
                       WebkitTouchCallout: 'none',
@@ -78,7 +79,7 @@ export default function ProfileHeader({
                       userSelect: 'none'
                     }}
                   >
-                    <FaGithub className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
+                    <FaGithub aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
                   </a>
                 </div>
               </TooltipTrigger>
@@ -96,6 +97,7 @@ export default function ProfileHeader({
                     href={socialLinks.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Twitter"
                     style={{
                       WebkitTapHighlightColor: 'transparent',
                       WebkitTouchCallout: 'none',
@@ -103,7 +105,7 @@ export default function ProfileHeader({
                       userSelect: 'none'
                     }}
                   >
-                    <FaXTwitter className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
+                    <FaXTwitter aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
                   </a>
                 </div>
               </TooltipTrigger>
@@ -121,6 +123,7 @@ export default function ProfileHeader({
                     href={socialLinks.resume}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Resume"
                     style={{
                       WebkitTapHighlightColor: 'transparent',
                       WebkitTouchCallout: 'none',
@@ -128,7 +131,7 @@ export default function ProfileHeader({
                       userSelect: 'none'
                     }}
                   >
-                    <FaPaperclip className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
+                    <FaPaperclip aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
                   </a>
                 </div>
               </TooltipTrigger>
@@ -146,6 +149,7 @@ export default function ProfileHeader({
                     href={socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn"
                     style={{
                       WebkitTapHighlightColor: 'transparent',
                       WebkitTouchCallout: 'none',
@@ -153,7 +157,7 @@ export default function ProfileHeader({
                       userSelect: 'none'
                     }}
                   >
-                    <FaLinkedin className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
+                    <FaLinkedin aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
                   </a>
                 </div>
               </TooltipTrigger>

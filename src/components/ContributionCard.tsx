@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowUpRight, ChevronDown, ChevronUp, GitMerge } from 'lucide-react'
-import { fallbackContributions } from '@/lib/github'
+import { fallbackContributions } from '@/data/contributions'
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
 
 interface Contribution {
