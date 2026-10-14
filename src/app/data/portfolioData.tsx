@@ -165,6 +165,7 @@ export const DATA = {
       video:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/vitapharm.mp4",
     },
+    /* Temporarily hidden from the portfolio.
     {
       title: "Camposocial",
       href: "https://camposocial.app",
@@ -195,6 +196,7 @@ export const DATA = {
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/camposocial.webp",
       video: "",
     },
+    */
     {
       title: "Uniwell",
       href: "https://uniwell.uzskicorp.agency",
