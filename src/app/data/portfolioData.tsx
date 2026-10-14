@@ -238,7 +238,7 @@ export const DATA = {
         },
       ],
       image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-corp.png",
+        "/uzski-corp-landing-2026-10.png",
       video: "",
     },
     {
@@ -247,9 +247,9 @@ export const DATA = {
       dates: "Feb 2026 - Present",
       active: true,
       description:
-        "Zentiri gives founders and HR leaders the tools they need to recruit top talent, automate onboarding workflows, and foster a high-performing culture from day one. ",
+        "An HR platform for small teams, bringing hiring, leave, payroll, and employee self-service into one place. Redesigned the brand, landing page, employer dashboard, and employee portal around a people-led identity and the Day Strip component for leave balances, onboarding progress, and payroll cycles.",
       technologies: ["Next.js", "TypeScript", "Supabase"],
-      oneLiner: "Hiring and onboarding platform for startups",
+      oneLiner: "Hiring, leave and payroll for small teams",
       links: [
         {
           type: "Website",
@@ -257,7 +257,7 @@ export const DATA = {
           icon: "globe",
         },
       ],
-      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing.png",
+      image: "/zentiri-landing-2026-10.png",
       video: "",
     },
     
