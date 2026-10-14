@@ -24,7 +24,7 @@ export default function BannerSection({
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <p className="text-white text-base sm:text-xl italic font-[family-name:var(--font-instrument-serif)] text-center backdrop-blur-[2px] bg-black/10 px-5 py-2.5 rounded-lg">{quote}</p>
+          <p className="text-white text-base font-medium sm:text-xl font-[family-name:var(--font-geist-pixel-circle)] text-center backdrop-blur-[2px] bg-black/20 [text-shadow:0_0_1px_rgb(255_255_255/45%),0_1px_4px_rgb(0_0_0/60%)] px-5 py-2.5 rounded-lg">{quote}</p>
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ export default function SpotifyPlayer({
   const [uiArtists, setUiArtists] = useState<string | null>(null)
   const [uiLabel, setUiLabel] = useState<'Now playing' | 'Last played'>('Now playing')
   const [uiSpinning, setUiSpinning] = useState(false)
-  const [status, setStatus] = useState<'loading' | 'ready' | 'empty'>('loading')
+  const [status, setStatus] = useState<'loading' | 'ready' | 'empty' | 'error'>('loading')
 
   useEffect(() => {
     let cancelled = false
@@ -58,7 +58,7 @@ export default function SpotifyPlayer({
         setStatus((s) => (s === 'ready' ? s : 'loading'))
         const res = await fetch(apiUrl, { cache: 'no-store' })
         if (!res.ok) {
-          setStatus('empty')
+          if (!cancelled) setStatus('error')
           return
         }
         const data = (await res.json()) as {
@@ -94,7 +94,8 @@ export default function SpotifyPlayer({
         setUiSongName(data.songName ?? null)
         setUiArtists(data.artists ?? null)
       } catch {
-        setStatus('empty')
+        if (cancelled) return
+        setStatus('error')
         setUiSpinning(false)
       }
     }
@@ -111,7 +112,15 @@ export default function SpotifyPlayer({
     <div className="w-full">
 
       <div className="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6">
-        {status !== 'ready' ? (
+        {status === 'error' || status === 'empty' ? (
+          <div className="flex items-center gap-4" role="status">
+            <VinylDisc spinning={false} className="opacity-40" />
+            <div>
+              <p className="text-sm font-medium text-foreground">Spotify</p>
+              <p className="mt-1 text-sm text-muted-foreground">{status === 'error' ? 'Listening activity is temporarily unavailable.' : 'No recent listening activity.'}</p>
+            </div>
+          </div>
+        ) : status === 'loading' ? (
           <div className="flex items-center gap-4">
             <div className="flex min-w-0 flex-1 items-center gap-4">
               <div className="h-16 w-16 shrink-0 rounded-lg bg-neutral-200/70 dark:bg-neutral-800/70 sm:h-[72px] sm:w-[72px]" />
@@ -156,15 +165,15 @@ export default function SpotifyPlayer({
                 href={uiTrackUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block cursor-pointer text-base font-semibold text-black hover:underline dark:text-white"
+                className="block cursor-pointer font-[family-name:var(--font-geist-pixel-circle)] text-base font-semibold text-black hover:underline dark:text-white"
               >
                 {uiSongName ?? 'Open in Spotify'}
               </a>
             ) : (
-              <p className="block text-base font-semibold text-black dark:text-white">{uiSongName ?? '—'}</p>
+              <p className="block font-[family-name:var(--font-geist-pixel-circle)] text-base font-semibold text-black dark:text-white">{uiSongName ?? '—'}</p>
             )}
 
-            {uiArtists ? <p className="text-sm text-[#1DB954]">by {uiArtists}</p> : null}
+            {uiArtists ? <p className="font-[family-name:var(--font-geist-pixel-circle)] text-sm text-[#1DB954]">by {uiArtists}</p> : null}
           </div>
 
           <VinylDisc spinning={uiSpinning} />

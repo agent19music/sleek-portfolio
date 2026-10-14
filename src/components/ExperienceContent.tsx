@@ -50,7 +50,8 @@ export default function ExperienceContent() {
               </div>
 
               <div className="min-w-0 flex-1">
-                <h3 className="text-base font-medium text-black dark:text-white sm:text-lg">
+                <p className="text-sm font-medium text-black dark:text-white sm:text-base">{exp.title}</p>
+                <h3 className="mt-0.5 text-xs font-medium text-black/70 dark:text-white/70 sm:text-sm">
                   {exp.href ? (
                     <Link href={exp.href} target="_blank" className="transition-colors hover:text-[#006FEE]">
                       {exp.company}
@@ -59,7 +60,6 @@ export default function ExperienceContent() {
                     exp.company
                   )}
                 </h3>
-                <p className="mt-1 text-xs opacity-70 sm:text-sm">{exp.title}</p>
                 <p className="mt-3 text-sm leading-relaxed text-black/70 dark:text-white/70">{exp.description}</p>
               </div>
             </div>
