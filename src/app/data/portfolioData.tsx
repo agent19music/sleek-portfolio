@@ -238,7 +238,7 @@ export const DATA = {
         },
       ],
       image:
-        "/uzski-corp-landing-2026-10.png",
+        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-corp-landing-2026-10.png",
       video: "",
     },
     {
@@ -257,7 +257,7 @@ export const DATA = {
           icon: "globe",
         },
       ],
-      image: "/zentiri-landing-2026-10.png",
+      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing-2026-10.png",
       video: "",
     },
     
