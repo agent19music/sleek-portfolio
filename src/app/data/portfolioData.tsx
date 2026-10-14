@@ -127,6 +127,25 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Aki Wah",
+      href: "https://akiwah.lol/",
+      dates: "Sep 2026 - Present",
+      active: true,
+      description:
+        "Built an anonymous platform for sharing text and voice notes to Kenyan names, with live feeds, reactions, and moderation. Went viral on Twitter, reaching a peak of 4,000 concurrent users and over 60,000 requests per hour on a single VPS with 2 GB RAM and 1 vCPU. Built with Elixir, Phoenix LiveView, and PostgreSQL, with voice notes stored in Cloudflare R2.",
+      technologies: ["Elixir", "Phoenix LiveView", "PostgreSQL", "Cloudflare R2"],
+      oneLiner: "Anonymous notes to Kenyan names, built with Elixir",
+      links: [
+        {
+          type: "Website",
+          href: "https://akiwah.lol/",
+          icon: "globe",
+        },
+      ],
+      image: "/akiwah-og.png",
+      video: "",
+    },
+    {
       title: "Vitapharm Cosmetics",
       href: "https://github.com/agent19music/vitapharm-client",
       dates: "Apr 2024 - Aug 2024",
