@@ -1,107 +1,110 @@
-'use client'
+import Image from 'next/image'
 
-import { Marquee } from "@/components/magicui/marquee";
-import Image from "next/image";
+type StackItem = { name: string; icon?: string }
+const stackGroups: { category: string; items: StackItem[] }[] = [
+  {
+    category: 'Language',
+    items: [
+      { name: 'TypeScript', icon: '/tech-icons/typescript.svg' },
+      { name: 'Elixir', icon: '/tech-icons/elixir.svg' },
+      { name: 'Python', icon: '/tech-icons/python.svg' },
+      { name: 'SQL', icon: '/tech-icons/sql.svg' },
+    ],
+  },
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'React', icon: '/tech-icons/react.svg' },
+      { name: 'Next.js', icon: '/tech-icons/nextjs.svg' },
+      { name: 'Tailwind CSS', icon: '/tech-icons/tailwind.svg' },
+      { name: 'Phoenix LiveView', icon: '/tech-icons/phoenix.svg' },
+    ],
+  },
+  {
+    category: 'Mobile',
+    items: [
+      { name: 'React Native', icon: '/tech-icons/react.svg' },
+      { name: 'Kotlin', icon: '/tech-icons/kotlin.svg' },
+    ],
+  },
+  {
+    category: 'Backend & Database',
+    items: [
+      { name: 'FastAPI', icon: '/tech-icons/fastapi.svg' },
+      { name: 'Phoenix', icon: '/tech-icons/phoenix.svg' },
+      { name: 'PostgreSQL', icon: '/tech-icons/postgresql.svg' },
+      { name: 'Redis', icon: '/tech-icons/redis.svg' },
+    ],
+  },
+  {
+    category: 'Workflow & AI',
+    items: [
+      { name: 'Claude', icon: '/tech-icons/claude.svg' },
+      { name: 'Cursor', icon: '/tech-icons/cursor.svg' },
+      { name: 'Gemini', icon: '/tech-icons/gemini.svg' },
+      { name: 'ChatGPT', icon: '/tech-icons/openai.svg' },
+      { name: 'Codex', icon: '/tech-icons/openai.svg' },
+      { name: 'Grok' },
+      { name: 'Git', icon: '/tech-icons/Git.svg' },
+      { name: 'Docker', icon: '/tech-icons/docker.svg' },
+      { name: 'Vercel', icon: '/skills/vercel.svg' },
+    ],
+  },
+  {
+    category: 'Analytics',
+    items: [
+      { name: 'Google Analytics', icon: '/tech-icons/google-analytics.svg' },
+      { name: 'OpenPanel', icon: '/tech-icons/openpanel.svg' },
+      { name: 'PostHog', icon: '/tech-icons/posthog.svg' },
+    ],
+  },
+  {
+    category: 'Design',
+    items: [
+      { name: 'Figma', icon: '/tech-icons/figma.svg' },
+      { name: 'Paper', icon: '/tech-icons/paper.svg' },
+    ],
+  },
+  {
+    category: 'Cloud',
+    items: [
+      { name: 'Azure', icon: '/tech-icons/Azure.svg' },
+      { name: 'AWS', icon: '/tech-icons/AWS.svg' },
+      { name: 'Google Cloud', icon: '/tech-icons/gcp.svg' },
+    ],
+  },
+]
 
-
-// Tech Stack Data
-const techStack = [
-  // Languages
-  { name: "TypeScript", category: "language", icon: "/tech-icons/typescript.svg", color: "bg-gray-500" },
-  { name: "Elixir", category: "language", icon: "/tech-icons/elixir.svg", color: "bg-gray-500" },
-  { name: "Python", category: "language", icon: "/tech-icons/python.svg", color: "bg-gray-500" },
-  { name: "SQL", category: "language", icon: "/tech-icons/sql.svg", color: "bg-gray-500" },
-  
-  // Frameworks & Libraries
-  { name: "React.js", category: "framework", icon: "/tech-icons/react.svg", color: "bg-gray-500" },
-  { name: "Next.js", category: "framework", icon: "/tech-icons/nextjs.svg", color: "bg-gray-500" },
-  { name: "FastAPI", category: "framework", icon: "/tech-icons/fastapi.svg", color: "bg-gray-500" },
-  { name: "Tailwind CSS", category: "framework", icon: "/tech-icons/tailwind.svg", color: "bg-gray-500" },
-  
-  // Databases & Tools
-  { name: "PostgreSQL", category: "database", icon: "/tech-icons/postgresql.svg", color: "bg-gray-500" },
-  { name: "Redis", category: "database", icon: "/tech-icons/redis.svg", color: "bg-gray-500" },
-  
-  // Developer Tools
-  { name: "Git", category: "tool", icon: "/tech-icons/Git.svg", color: "bg-gray-500" },
-  { name: "Docker", category: "tool", icon: "/tech-icons/docker.svg", color: "bg-gray-500" },
-  { name: "Azure", category: "tool", icon: "/tech-icons/Azure.svg", color: "bg-gray-500" },
-  { name: "AWS", category: "tool", icon: "/tech-icons/AWS.svg", color: "bg-gray-500" },
-  { name: "Google Cloud", category: "tool", icon: "/tech-icons/gcp.svg", color: "bg-gray-500" },
-];
-
-interface TechIconProps {
-  tech: typeof techStack[0];
-  className?: string;
-}
-
-function TechIcon({ tech, className = "" }: TechIconProps) {
+export default function TechStackMarquee({ className = '' }: { className?: string }) {
   return (
-    <div className={`flex flex-col items-center justify-center p-2 sm:p-3 min-w-[80px] sm:min-w-[90px] group transition-transform duration-200 ease-out pointer-fine:hover:scale-105 ${className}`}>
-      {/* Icon Container */}
-      <div className="relative w-8 h-8 sm:w-10 sm:h-10 mb-1.5 sm:mb-2 flex items-center justify-center">
-        {/* Try to load actual SVG, fallback to grey placeholder */}
-        <div className="w-full h-full relative">
-          <Image
-            src={tech.icon}
-            alt={tech.name}
-            width={40}
-            height={40}
-            className="w-full h-full object-contain grayscale opacity-70 hover:opacity-90 transition-opacity"
-            onError={(e) => {
-              // If image fails to load, replace with grey placeholder
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const parent = target.parentElement;
-              if (parent) {
-                parent.innerHTML = `
-                  <div class="w-full h-full ${tech.color} rounded-lg flex items-center justify-center text-white text-sm font-bold">
-                    ${tech.name.charAt(0)}
-                  </div>
-                `;
-              }
-            }}
-          />
-        </div>
-      </div>
-      
-      {/* Tech Name */}
-      <span className="text-[10px] sm:text-xs text-center font-medium text-gray-700 dark:text-gray-300 leading-tight group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
-        {tech.name}
-      </span>
-    </div>
-  );
-}
-
-interface TechStackMarqueeProps {
-  className?: string;
-}
-
-export default function TechStackMarquee({ className = "" }: TechStackMarqueeProps) {
-  return (
-    <div className={`w-full ${className}`}>
-      {/* Title - matching other component styles */}
-      <div className="mb-4">
-        <h2 className="text-base font-[family-name:var(--font-instrument-serif)] sm:text-xl mb-3 opacity-80 mt-4 sm:mt-6 -tracking-[0.01em]">
-          Stack I use
-        </h2>
-        <p className="text-sm sm:text-base dark:text-white/70 text-black/70 leading-relaxed">
-          Technologies I work with to build products that solve real problems
-        </p>
-      </div>
-
-      {/* Single Marquee Container */}
+    <section id="stack" aria-labelledby="stack-heading" className={`border-x border-y border-border ${className}`}>
+      <header className="border-b border-border px-4">
+        <h2 id="stack-heading" className="py-1 text-3xl font-medium tracking-tight">Stack</h2>
+      </header>
       <div className="relative">
-        <Marquee pauseOnHover className="[--duration:80s] [--gap:1rem]">
-          {techStack.map((tech, index) => (
-            <TechIcon key={`${tech.name}-${index}`} tech={tech} />
-          ))}
-        </Marquee>
-
-        {/* Fade edges for better visual effect */}
-        <div className="absolute left-0 top-0 w-20 h-full bg-linear-to-r from-white dark:from-zinc-900 to-transparent pointer-events-none z-10" />
-        <div className="absolute right-0 top-0 w-20 h-full bg-linear-to-l from-white dark:from-zinc-900 to-transparent pointer-events-none z-10" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-48 hidden border-r border-dashed border-border sm:block" />
+        {stackGroups.map(({ category, items }, index) => {
+          const categoryId = `stack-${index + 1}`
+          return (
+            <div key={category} className="grid items-start gap-y-2 border-b border-border py-4 last:border-none sm:grid-cols-[12rem_1fr]">
+              <h3 id={categoryId} className="pl-4 text-sm/6 font-normal">
+                <span aria-hidden="true" className="mr-1.5 font-mono text-muted-foreground/80">{String(index + 1).padStart(2, '0')}</span>
+                {category}
+              </h3>
+              <ul aria-labelledby={categoryId} className="flex flex-wrap gap-1.5 px-4">
+                {items.map(({ name, icon }) => (
+                  <li key={name} className="flex">
+                    <span className="inline-flex h-6 items-center justify-center gap-1.25 rounded-full bg-zinc-50/80 px-2 font-mono text-xs text-foreground inset-ring-1 inset-ring-border dark:bg-zinc-900/80">
+                      {icon && <Image src={icon} alt="" aria-hidden="true" width={14} height={14} className="size-3.5 shrink-0 object-contain grayscale opacity-80 dark:invert" />}
+                      {name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        })}
       </div>
-    </div>
-  );
+    </section>
+  )
 }

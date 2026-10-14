@@ -5,6 +5,7 @@ import Image from 'next/image'
 import DiagonalPattern from './DiagonalPattern'
 import BannerSection from './BannerSection'
 import ProfileHeader from './ProfileHeader'
+import PortfolioOverview from './PortfolioOverview'
 import ContentSection from './ContentSection'
 import ContentParagraph from './ContentParagraph'
 import SectionBorder from './SectionBorder'
@@ -50,13 +51,10 @@ export default function NewHeroSection() {
               name={DATA.name}
               title="Software Engineer • Full-stack"
               profileImage="https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/seanpfpnobg.webp"
-              socialLinks={{
-                twitter: DATA.contact.social.X.url,
-                github: DATA.contact.social.GitHub.url,
-                linkedin: DATA.contact.social.LinkedIn.url,
-              }}
             />
           </Reveal>
+
+          <PortfolioOverview />
 
           {/* Content Prose */}
           <div className="prose dark:prose-invert max-w-none">
@@ -81,7 +79,7 @@ export default function NewHeroSection() {
               {/* Experience Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-10 lg:px-12 py-2">
-                  <h2 className="text-base sm:text-xl mb-3  mt-4 sm:mt-6 px-4 opacity-80 font-(family-name:--font-instrument-serif)">Professional Experience</h2>
+                  <h2 className="text-base sm:text-xl mb-3  mt-4 sm:mt-6 px-4 opacity-80 font-sans">Professional Experience</h2>
                   <div className="px-4">
                     <ExperienceContent />
                   </div>
@@ -96,7 +94,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1} disableOnMobile>
                 <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity opacity-80 font-(family-name:--font-instrument-serif)">Projects / Works</h2>
+                    <h2 className="text-base sm:text-xl opacity opacity-80 font-sans">Projects / Works</h2>
                   </div>
                   <div className="px-4">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 group">
@@ -131,7 +129,7 @@ export default function NewHeroSection() {
                   {/* Hackathons Section */}
                   <div className="px-4 mb-8 sm:mb-10">
                     <div className="mb-4 sm:mb-5">
-                      <h2 className="text-base sm:text-xl opacity-80 font-(family-name:--font-instrument-serif)">
+                      <h2 className="text-base sm:text-xl opacity-80 font-sans">
                         I like building fast
                       </h2>
                       <p className="mt-1 text-xs sm:text-sm text-black/60 dark:text-white/60">
@@ -209,7 +207,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1}>
                 <div className="sm:px-10 lg:px-12 py-2">
                   <div className="px-4 mb-4 sm:mb-6 mt-4 sm:mt-6">
-                    <h2 className="text-base sm:text-xl opacity-80 font-(family-name:--font-instrument-serif)">Thoughts</h2>
+                    <h2 className="text-base sm:text-xl opacity-80 font-sans">Thoughts</h2>
                   </div>
                   <div className="px-4">
                     <div className="space-y-0 group">
@@ -227,10 +225,8 @@ export default function NewHeroSection() {
 
               {/* Tech Stack Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-10 lg:px-12 mt-4 sm:mt-6 mb-4 sm:mb-6">
-                  <div className="px-4">
-                    <TechStackMarquee className="w-full" />
-                  </div>
+                <div className="mt-4 sm:mt-6 mb-4 sm:mb-6">
+                  <TechStackMarquee className="w-full" />
                 </div>
               </Reveal>
 

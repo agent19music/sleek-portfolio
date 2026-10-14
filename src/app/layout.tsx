@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Roboto } from "next/font/google";
+import localFont from "next/font/local";
+import { GeistPixelCircle } from "geist/font/pixel";
 import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
@@ -9,19 +10,17 @@ import { DynamicTitle } from "@/components/DynamicTitle"
 import GoogleAnalytics from "@/components/GoogleAnalytics"
 import { WebVitals } from "@/components/WebVitals"
 
-const hkGrotesk = Roboto({
-  weight: ['400', '500', '700'],
-  style: 'normal',
-  subsets: ['latin'],
+const hkGrotesk = localFont({
+  src: '../fonts/Geist-Variable.woff2',
+  weight: '100 900',
   variable: '--font-hk-grotesk',
   display: 'swap',
 })
 
-const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-instrument-serif',
+const geistMono = localFont({
+  src: '../fonts/GeistMono-Variable.woff2',
+  weight: '100 900',
+  variable: '--font-geist-mono',
   display: 'swap',
 })
 
@@ -181,7 +180,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${hkGrotesk.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
+      <body className={`${hkGrotesk.className} ${hkGrotesk.variable} ${geistMono.variable} ${GeistPixelCircle.variable}`} suppressHydrationWarning={true}>
         <GoogleAnalytics />
         <WebVitals />
         <ThemeProvider
@@ -196,6 +195,8 @@ export default function RootLayout({
           <GradualBlur
             position="bottom"
             height="5rem"
+            responsive
+            mobileHeight="2rem"
             target="page"
             zIndex={1}
             strength={2}
@@ -209,11 +210,7 @@ export default function RootLayout({
           data-client-id="2cYj0B5Uv0T4q70DhnoAc"
           data-enable-batching="true"
         />
-        <Script
-          src="https://www.makermap.lol/badge/uzski404.js"
-          strategy="lazyOnload"
-          data-position="corner"
-        />
+
       </body>
     </html>
   );

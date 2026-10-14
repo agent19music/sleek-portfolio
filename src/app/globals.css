@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "../components/contribution-graph/contribution-graph.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -84,6 +85,7 @@
     transform: translateZ(0) rotate(360deg);}}}
 
 :root {
+  --font-instrument-serif: var(--font-hk-grotesk);
   --radius: 0.625rem;
   --background: hsl(97 4% 100%);
   --foreground: oklch(0.141 0.005 285.823);

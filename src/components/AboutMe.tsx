@@ -22,7 +22,7 @@ export default function AboutMe() {
                 {/* Info Section */}
                 <div className="flex-1">
                     {/* Name */}
-                    <h3 className="text-2xl sm:text-3xl font-[family-name:var(--font-instrument-serif)] text-black dark:text-white mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-sans text-black dark:text-white mb-4">
                         Sean Motanya
                     </h3>
 

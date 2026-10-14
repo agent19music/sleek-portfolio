@@ -1,210 +1,68 @@
-'use client';
-import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
-import { useTheme } from 'next-themes';
-import { Moon, Sun } from 'lucide-react';
-import * as React from 'react';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+'use client'
+
+import { Moon, Sun } from '@phosphor-icons/react'
+import { useTheme } from 'next-themes'
+import * as React from 'react'
 
 interface ProfileHeaderProps {
   name?: string
   title?: string
   profileImage?: string
-  socialLinks?: {
-    twitter?: string
-    resume?: string
-    github?: string
-    linkedin?: string
-  }
 }
 
 export default function ProfileHeader({
-  name = "Sean Motanya",
-  title = "Software Engineer • Full-stack",
-  profileImage = "/pfp.jpg",
-  socialLinks = {
-    twitter: "https://x.com/uzski404",
-    github: "https://github.com/agent19music",
-    linkedin: "https://www.linkedin.com/in/sean-motanya/",
-  }
+  name = 'Sean Motanya',
+  title = 'Software Engineer · Full-stack',
+  profileImage = '/pfp.jpg',
 }: ProfileHeaderProps) {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  React.useEffect(() => setMounted(true), [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    const documentWithTransition = document as Document & {
+      startViewTransition?: (callback: () => void) => void
+    }
+
+    if (documentWithTransition.startViewTransition) {
+      documentWithTransition.startViewTransition(() => setTheme(newTheme))
+    } else {
+      setTheme(newTheme)
+    }
+  }
 
   return (
-    <div className="flex-col pt-3 sm:pt-4">
-      <div className="flex items-center justify-between mb-4 sm:ml-8 ml-4 sm:mr-8 mr-4">
+    <header className="grid grid-cols-[auto_1fr] border-x border-y border-border">
+      <div className="border-r border-border p-1">
         <div
-          className="w-[72px] h-[72px] sm:w-[88px] sm:h-[88px] relative z-10 shrink-0 rounded-full bg-white p-[5px] overflow-hidden shadow-md ring-1 ring-black/10"
+          className="size-28 rounded-full bg-muted ring-1 ring-border sm:size-40"
           role="img"
-          aria-label={name}
-        >
-          <div
-            className="h-full w-full rounded-full overflow-hidden bg-cover bg-center"
-            style={{
-              backgroundImage: `url("${profileImage}")`,
-              backgroundPosition: 'center 28%',
-            }}
-          />
-        </div>
-        {/* <PortfolioStars /> */}
+          aria-label={`${name} profile photo`}
+          style={{
+            backgroundImage: `url("${profileImage}")`,
+            backgroundPosition: 'center 28%',
+            backgroundSize: 'cover',
+          }}
+        />
       </div>
-      <div className="text-left sm:flex sm:justify-between sm:items-center w-full sm:px-8 px-4 flex-col sm:flex-row">
-        <div className="px-0 lg:-ml-1">
-          <h1 className="font-[family-name:var(--font-instrument-serif)] italic text-2xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
-            {name}
-          </h1>
-          <p className="text-xs text-neutral-600 dark:text-neutral-400 sm:text-sm">
-            {title}
-          </p>
-        </div>
-        <div className="flex justify-start gap-1 sm:gap-2 mt-3 sm:mt-0 px-0">
-          {socialLinks.github && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
-                  <a
-                    className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
-                    href={socialLinks.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    style={{
-                      WebkitTapHighlightColor: 'transparent',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none',
-                      userSelect: 'none'
-                    }}
-                  >
-                    <FaGithub aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
-                  </a>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                GitHub
-              </TooltipContent>
-            </Tooltip>
-          )}
-          {socialLinks.twitter && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
-                  <a
-                    className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
-                    href={socialLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Twitter"
-                    style={{
-                      WebkitTapHighlightColor: 'transparent',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none',
-                      userSelect: 'none'
-                    }}
-                  >
-                    <FaXTwitter aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
-                  </a>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                Twitter
-              </TooltipContent>
-            </Tooltip>
-          )}
-          {socialLinks.resume && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
-                  <a
-                    className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
-                    href={socialLinks.resume}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Resume"
-                    style={{
-                      WebkitTapHighlightColor: 'transparent',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none',
-                      userSelect: 'none'
-                    }}
-                  >
-                    <FaPaperclip aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
-                  </a>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                Resume
-              </TooltipContent>
-            </Tooltip>
-          )}
-          {socialLinks.linkedin && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
-                  <a
-                    className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
-                    href={socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    style={{
-                      WebkitTapHighlightColor: 'transparent',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none',
-                      userSelect: 'none'
-                    }}
-                  >
-                    <FaLinkedin aria-hidden="true" className="text-[16px] sm:text-[16px] text-black/75 dark:text-white/80" />
-                  </a>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                LinkedIn
-              </TooltipContent>
-            </Tooltip>
-          )}
+      <div className="flex min-w-0 flex-col justify-end">
+        <div className="flex items-center justify-between gap-2 border-t border-border px-4 py-3">
+          <h1 className="min-w-0 text-2xl font-medium leading-tight tracking-tight sm:text-[2rem]">{name}</h1>
           {mounted && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="w-8 h-8 sm:w-8 sm:h-8 bg-black/5 dark:bg-white/10 pointer-fine:hover:bg-black/10 dark:pointer-fine:hover:bg-white/20 transition-[colors] duration-200 rounded-full flex items-center justify-center">
-                  <button
-                    onClick={() => {
-                      const newTheme = theme === 'light' ? 'dark' : 'light'
-                      if (typeof document !== "undefined" && "startViewTransition" in document) {
-                        ; (document as Document & { startViewTransition: (callback: () => void) => void }).startViewTransition(() => {
-                          setTheme(newTheme)
-                        })
-                      } else {
-                        setTheme(newTheme)
-                      }
-                    }}
-                    className="touch-manipulation active:opacity-75 flex items-center justify-center w-full h-full"
-                    aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
-                    style={{
-                      WebkitTapHighlightColor: 'transparent',
-                      WebkitTouchCallout: 'none',
-                      WebkitUserSelect: 'none',
-                      userSelect: 'none'
-                    }}
-                  >
-                    {theme === 'light' ? (
-                      <Moon className="size-[14px] -mt-px" aria-hidden="true" />
-                    ) : (
-                      <Sun className="size-[14px] -mt-px" aria-hidden="true" />
-                    )}
-                  </button>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                {theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
-              </TooltipContent>
-            </Tooltip>
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+            >
+              {theme === 'light' ? <Moon size={18} aria-hidden="true" /> : <Sun size={18} aria-hidden="true" />}
+            </button>
           )}
         </div>
+        <p className="border-t border-border px-4 py-2 font-[family-name:var(--font-geist-pixel-circle)] text-xs text-foreground sm:text-sm">{title}</p>
       </div>
-    </div>
+    </header>
   )
 }
