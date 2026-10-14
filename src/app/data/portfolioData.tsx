@@ -127,6 +127,25 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Aki Wah",
+      href: "https://akiwah.lol/",
+      dates: "Sep 2026 - Present",
+      active: true,
+      description:
+        "Built an anonymous platform for sharing text and voice notes to Kenyan names, with live feeds, reactions, and moderation. Went viral on Twitter, reaching a peak of 4,000 concurrent users and over 60,000 requests per hour on a single VPS with 2 GB RAM and 1 vCPU. Built with Elixir, Phoenix LiveView, and PostgreSQL, with voice notes stored in Cloudflare R2.",
+      technologies: ["Elixir", "Phoenix LiveView", "PostgreSQL", "Cloudflare R2"],
+      oneLiner: "Anonymous notes to Kenyan names, built with Elixir",
+      links: [
+        {
+          type: "Website",
+          href: "https://akiwah.lol/",
+          icon: "globe",
+        },
+      ],
+      image: "/akiwah-og.png",
+      video: "",
+    },
+    {
       title: "Vitapharm Cosmetics",
       href: "https://github.com/agent19music/vitapharm-client",
       dates: "Apr 2024 - Aug 2024",
@@ -146,6 +165,7 @@ export const DATA = {
       video:
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/vitapharm.mp4",
     },
+    /* Temporarily hidden from the portfolio.
     {
       title: "Camposocial",
       href: "https://camposocial.app",
@@ -176,6 +196,7 @@ export const DATA = {
         "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/camposocial.webp",
       video: "",
     },
+    */
     {
       title: "Uniwell",
       href: "https://uniwell.uzskicorp.agency",
@@ -217,26 +238,26 @@ export const DATA = {
         },
       ],
       image:
-        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-corp.png",
+        "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/uzski-corp-landing-2026-10.png",
       video: "",
     },
     {
       title: "Zentiri",
-      href: "https://zentiri.app",
+      href: "https://zentiri.uzskicorp.agency/",
       dates: "Feb 2026 - Present",
       active: true,
       description:
-        "Zentiri gives founders and HR leaders the tools they need to recruit top talent, automate onboarding workflows, and foster a high-performing culture from day one. ",
+        "An HR platform for small teams, bringing hiring, leave, payroll, and employee self-service into one place. Redesigned the brand, landing page, employer dashboard, and employee portal around a people-led identity and the Day Strip component for leave balances, onboarding progress, and payroll cycles.",
       technologies: ["Next.js", "TypeScript", "Supabase"],
-      oneLiner: "Hiring and onboarding platform for startups",
+      oneLiner: "Hiring, leave and payroll for small teams",
       links: [
         {
           type: "Website",
-          href: "https://zentiri.app",
+          href: "https://zentiri.uzskicorp.agency/",
           icon: "globe",
         },
       ],
-      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing.png",
+      image: "https://pub-c6a134c8e1fd4881a475bf80bc0717ba.r2.dev/zentiri-landing-2026-10.png",
       video: "",
     },
     
