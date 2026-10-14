@@ -243,7 +243,7 @@ export const DATA = {
     },
     {
       title: "Zentiri",
-      href: "https://zentiri.app",
+      href: "https://zentiri.uzskicorp.agency/",
       dates: "Feb 2026 - Present",
       active: true,
       description:
@@ -253,7 +253,7 @@ export const DATA = {
       links: [
         {
           type: "Website",
-          href: "https://zentiri.app",
+          href: "https://zentiri.uzskicorp.agency/",
           icon: "globe",
         },
       ],
